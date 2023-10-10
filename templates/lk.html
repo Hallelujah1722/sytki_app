@@ -1,0 +1,514 @@
+{% extends 'base.html' %}
+# наследование от страницы base.html
+
+<body>
+  <main>
+
+    {% block body %}
+          <!--ДЛЯ КУРСОВОГО-->
+      <div class="d-flex flex-wrap container text-center align-items-center">
+        <form class="row g-3 py-4 needs-validation" novalidate>
+
+          <div class="container text-center">
+            <div class="row align-items-center justify-content-center">
+              <div class="col-md-4 py-4 form-check-inline">
+                <div class="calendar"></div>
+              </div>
+              <div class="col-md-7 py-4 form-check-inline">
+                <h6 class="text-center">Расстановка на службу с «10» сентября 2023 г. по «11» сентября 2023 г. ФПСОИБ</h6>
+                <table class="table table-bordered text-start">
+                  <thead>
+                  <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Вид наряда</th>
+                    <th scope="col">Спец. звание</th>
+                    <th scope="col">ФИО</th>
+                    <th scope="col">№ ячейки</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Помощник дежурного</td>
+                    <td>сержант полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Постовой по КПП №1</td>
+                    <td>рядовой полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Постовой по КПП №2</td>
+                    <td>рядовой полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Постовой по КПП №3</td>
+                    <td>рядовой полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>6</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Постовой по КПП №4</td>
+                    <td>рядовой полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>14</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">6</th>
+                    <td>Патрульный по объекту №1</td>
+                    <td>рядовой полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>13</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">7</th>
+                    <td>Патрульный по объекту №2</td>
+                    <td>рядовой полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>9</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">8</th>
+                    <td>Патрульный по объекту №3</td>
+                    <td>рядовой полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">9</th>
+                    <td>Патрульный по объекту №4</td>
+                    <td>рядовой полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>7</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <hr class="featurette-divider">
+
+          <div class="container text-center">
+            <div class="row align-items-center justify-content-center">
+              <div class="col-md-7 py-4 form-check-inline">
+                <h6 class="text-center">Резерв на службу с «10» сентября 2023 г. по «11» сентября 2023 г. ФПСОИБ</h6>
+                <table class="table table-bordered text-start">
+                  <thead>
+                  <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Вид наряда</th>
+                    <th scope="col">Спец. звание</th>
+                    <th scope="col">ФИО</th>
+                    <th scope="col">№ ячейки</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Помощник дежурного</td>
+                    <td>сержант полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Постовой по КПП</td>
+                    <td>рядовой полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Патрульный по объекту</td>
+                    <td>рядовой полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>3</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <hr class="featurette-divider">
+
+          <div class="container text-center">
+            <div class="row align-items-center justify-content-center">
+              <h5 class="text-center">Модуль для осуществления замены</h5>
+              <div class="col-md-3 py-2 text-center">
+                <label for="validationCustom01" class="form-label">Кого заменить?</label>
+                <input type="text" class="form-control" id="validationCustom01" value="" required>
+              </div>
+              <div class="col-md-3 py-2 text-center">
+                <label for="validationCustom01" class="form-label">На кого заменить?</label>
+                <select class="form-select" id="validationCustom06" required>
+                  <option selected disabled value=""></option>
+                  <option>Иванов И.И.</option>
+                  <option>Иванов И.И.</option>
+                  <option>Иванов И.И.</option>
+                </select>
+              </div>
+              <div class="col-md-3 py-2 text-center">
+                <label for="validationCustom01" class="form-label">Вид замены</label>
+                <select class="form-select" id="validationCustom06" required>
+                  <option selected disabled value=""></option>
+                  <option>без обратной замены</option>
+                  <option>с обратной заменой</option>
+                </select>
+              </div>
+            </div>
+            <div class="row align-items-center justify-content-center">
+              <div class="col-md-2 py-0 text-center">
+                <label for="validationCustom01" class="form-label">Дата замены 1</label>
+                <input type="date" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom04" value="" required>
+              </div>
+              <div class="col-md-2 py-0 text-center">
+                <label for="validationCustom01" class="form-label">Дата замены 2</label>
+                <input type="date" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom04" value="" required>
+              </div>
+              <div class="col-md-2 py-0 text-center">
+                <label for="validationCustom01" class="form-label">Основание замены</label>
+                <select class="form-select" id="validationCustom06" required>
+                  <option selected disabled value=""></option>
+                  <option>болезнь</option>
+                  <option>служебная необходимость</option>
+                </select>
+              </div>
+              <div class="col-md-3 py-0 text-center">
+                <label for="validationCustom01" class="form-label">Подтверждение</label>
+                <input type="file" class="form-control" id="inputGroupFile01">
+              </div>
+            </div>
+            <div class="row align-items-center justify-content-center">
+              <div class="col-md-3 py-4">
+                <input class="btn btn-primary" type="submit" value="Сохранить и сгенерировать рапорт">
+              </div>
+            </div>
+          </div>
+
+          <hr class="featurette-divider">
+
+          <div class="container text-center">
+            <div class="row align-items-center justify-content-center">
+              <div class="col-md-12 py-4 form-check-inline">
+                <h6 class="text-center">Список замен на службу в сентябре 2023 г. ФПСОИБ</h6>
+                <table class="table table-bordered text-start">
+                  <thead>
+                  <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Кого заменили</th>
+                    <th scope="col">На кого заменили</th>
+                    <th scope="col">Пост замены</th>
+                    <th scope="col">Дата 1</th>
+                    <th scope="col">Дата 2</th>
+                    <th scope="col">Основание замены</th>
+                    <th scope="col">Подтверждение</th>
+                    <th scope="col">Рапорт</th>
+                    <th scope="col">Статус замены</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Помощник дежурного</td>
+                    <td>сержант полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>10</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Помощник дежурного</td>
+                    <td>сержант полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>10</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Помощник дежурного</td>
+                    <td>сержант полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>10</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Помощник дежурного</td>
+                    <td>сержант полиции</td>
+                    <td>Иванов И.И.</td>
+                    <td>10</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+  <!--ДЛЯ АДМИНА-->
+  <!--
+  <div class="d-flex flex-wrap container text-center align-items-center">
+    <form class="row g-3 py-4 needs-validation" novalidate>
+
+      <div class="container text-end">
+        <div class="row align-items-end justify-content-end">
+          <div class="col-md-4 py-4 form-check-inline">
+            <div class="calendar"></div>
+          </div>
+          <div class="col-md-7 py-4 form-check-inline">
+            <h6 class="text-center">Расстановка на службу с «10» сентября 2023 г. по «11» сентября 2023 г. ФПСОИБ</h6>
+            <table class="table table-bordered text-start">
+              <thead>
+              <tr>
+                <th scope="col">№</th>
+                <th scope="col">Вид наряда</th>
+                <th scope="col">Спец. звание</th>
+                <th scope="col">ФИО</th>
+                <th scope="col">№ ячейки</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Помощник дежурного</td>
+                <td>сержант полиции</td>
+                <td>Иванов И.И.</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Постовой по КПП №1</td>
+                <td>рядовой полиции</td>
+                <td>Иванов И.И.</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Постовой по КПП №2</td>
+                <td>рядовой полиции</td>
+                <td>Иванов И.И.</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Постовой по КПП №3</td>
+                <td>рядовой полиции</td>
+                <td>Иванов И.И.</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Постовой по КПП №4</td>
+                <td>рядовой полиции</td>
+                <td>Иванов И.И.</td>
+                <td>14</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Патрульный по объекту №1</td>
+                <td>рядовой полиции</td>
+                <td>Иванов И.И.</td>
+                <td>13</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>Патрульный по объекту №2</td>
+                <td>рядовой полиции</td>
+                <td>Иванов И.И.</td>
+                <td>9</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>Патрульный по объекту №3</td>
+                <td>рядовой полиции</td>
+                <td>Иванов И.И.</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td>Патрульный по объекту №4</td>
+                <td>рядовой полиции</td>
+                <td>Иванов И.И.</td>
+                <td>7</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-end">
+        <div class="row align-items-end justify-content-end">
+          <div class="col-md-7 py-0 form-check-inline">
+            <h6 class="text-center">Резерв на службу с «10» сентября 2023 г. по «11» сентября 2023 г. ФПСОИБ</h6>
+            <table class="table table-bordered text-start">
+              <thead>
+              <tr>
+                <th scope="col">№</th>
+                <th scope="col">Вид наряда</th>
+                <th scope="col">Спец. звание</th>
+                <th scope="col">ФИО</th>
+                <th scope="col">№ ячейки</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Помощник дежурного</td>
+                <td>сержант полиции</td>
+                <td>Иванов И.И.</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Постовой по КПП</td>
+                <td>рядовой полиции</td>
+                <td>Иванов И.И.</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Патрульный по объекту</td>
+                <td>рядовой полиции</td>
+                <td>Иванов И.И.</td>
+                <td>3</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+-->
+
+
+
+  <!--ДЛЯ КУРСАНТА-->
+  <!--
+  <div class="d-flex flex-wrap container text-center align-items-center">
+    <form class="row g-3 py-4 needs-validation" novalidate>
+      <div class="container text-start">
+        <div class="row align-items-start justify-content-start">
+          <div class="card mb-4 col-md-4 py-4 rounded-3 shadow-sm">
+            <div class="col-md-12">
+              <img src="img/foto.jpg" width="250" class="img-thumbnail img-fluid float-start" alt="...">
+            </div>
+            <div class="row align-items-start justify-content-start">
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="validationCustom03" value="сержант полиции" required>
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="validationCustom03" value="Иванов И.И." required>
+              </div>
+            </div>
+            <div class="row align-items-start justify-content-start">
+              <div class="col-md-4">
+                <input type="text" class="form-control" id="validationCustom03" value="903 взвод" required>
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" id="validationCustom03" value="4 курс" required>
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" id="validationCustom03" value="ФПСОИБ" required>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4 col-md-2 py-4 rounded-3 shadow-sm">
+            <div class="col-md-12">
+              <label class="form-label">Следующие сутки</label>
+              <input type="text" class="form-control" id="validationCustom03" value="" required>
+            </div>
+            <div class="col-md-12 py-2">
+              <label class="form-label">Суток за месяц</label>
+              <input type="text" class="form-control" id="validationCustom03" value="" required>
+            </div>
+            <div class="col-md-12 py-2">
+              <label class="form-label">Всего суток</label>
+              <input type="text" class="form-control" id="validationCustom03" value="" required>
+            </div>
+          </div>
+          <div class="card mb-4 col-md-2 py-4 rounded-3 shadow-sm">
+            <div class="col-md-12">
+              <label class="form-label">КПП</label>
+              <input type="text" class="form-control" id="validationCustom03" value="" required>
+            </div>
+            <div class="col-md-12 py-2">
+              <label class="form-label">Патруль</label>
+              <input type="text" class="form-control" id="validationCustom03" value="" required>
+            </div>
+            <div class="col-md-12 py-2">
+              <label class="form-label">ПД</label>
+              <input type="text" class="form-control" id="validationCustom03" value="" required>
+            </div>
+          </div>
+          <div class="card mb-4 col-md-2 py-4 rounded-3 shadow-sm">
+            <div class="col-md-12">
+              <label class="form-label">Будни</label>
+              <input type="text" class="form-control" id="validationCustom03" value="" required>
+            </div>
+            <div class="col-md-12 py-2">
+              <label class="form-label">Выходные</label>
+              <input type="text" class="form-control" id="validationCustom03" value="" required>
+            </div>
+            <div class="col-md-12 py-2">
+              <label class="form-label">Праздники</label>
+              <input type="text" class="form-control" id="validationCustom03" value="" required>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>-->
+    {% endblock %}
+  Функцинал вкладки:
+  1) админ
+  - ознакомление с графиком нарядов
+  - таблица с месяцем нарядов (возможность пролистывать месяца)
+  - при нажатии на день наряда выводится таблица расстановки и потенциальные замены на конкретный день
+  - нет возможности осуществления замены, только просмотр не закрытых замен!!!
+  - формирование и скачивание файла расстановки на конкретный день
+  2) курсовой офицер
+  - ознакомление с графиком нарядов
+  - таблица с месяцем нарядов (возможность пролистывать месяца)
+  - при нажатии на день наряда выводится таблица расстановки и потенциальные замены на конкретный день
+  - есть возможности осуществления замены (при нажатии на кнопку ЗАМЕНА - вывод дополнительного окна с осуществлением замены и прикреплением основания)
+  - формирование рапорта на замену суток
+  3) курсант
+  - личный кабинет с персональными данными
+  - вывод статистических данных о количестве и качестве суток лица
+  - ознакомление с графиком нарядов
+  - возможность указания нежелательных дней для наряда???
+
+</main>
+</body>
+</html>

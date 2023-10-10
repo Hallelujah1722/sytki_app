@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+# наследование от страницы base.html
+
+<body>
+  <main>
+    {% block body %}
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+      <div class="col-lg-12 text-center">
+        <h1 class="display-6 fw-bold lh-2 text-body-emphasis mb-1">Суточные наряды</h1>
+      </div>
+
+      <div class="row align-items-center g-lg-5 py-2">
+        <div class="col-md-10 mx-auto col-lg-5">
+          <form class="p-4 p-md-5 rounded-3" action="" method="post">
+            <div class="col-lg-12 text-center border-bottom mb-4">
+              <h3 class="lh-2 text-body-emphasis mb-1">Вход в систему</h3>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="floatingInput">
+              <label for="floatingInput">Логин</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="floatingPassword">
+              <label for="floatingPassword">Пароль</label>
+            </div>
+            <div class="border-bottom mb-4">
+              <small class="text-body-secondary">В случае потери данных для входа в учетную запись - обратитесь к администратору.</small>
+            </div>
+            <div>
+              <button href="lk.html" class="w-100 btn btn-lg btn-primary" type="submit">Вход</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+
+
+  </main>
+</body>
+</html>

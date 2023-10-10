@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+# наследование от страницы base.html
+
+<body>
+<main>
+
+  {% block body %}
+
+  <div class="d-flex flex-wrap container text-center align-items-center justify-content-center">
+    <form class="row g-3 py-4 needs-validation text-center" novalidate>
+      <div class="mx-auto p-0 py-md-0 h5">
+
+        <div class="container text-center">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-6 py-1">
+              <label for="validationCustom01" class="form-label">Загрузите документацию</label>
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupFile01">Загрузка</label>
+              <input type="file" class="form-control" id="inputGroupFile01">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 py-2">
+          <button class="btn btn-primary" type="submit">Обновить список</button>
+        </div>
+
+        <!--Только для курсантов-->
+        <div class="row g-2">
+          <ul class="list-unstyled ps-0">
+            <li class="border-bottom mb-2 p-2">
+              <a class="icon-link mb-1 text-decoration-none" href="" rel="noopener" target="_blank">
+                Приказ//////////////////////////////////////////////////
+              </a>
+            </li>
+            <li class="border-bottom mb-2 p-2">
+              <a class="icon-link mb-1 text-decoration-none" href="" rel="noopener" target="_blank">
+                Приказ//////////////////////////////////////////////////
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+  Функцинал вкладки:
+  1) админ
+  - добавление служебных НПА по подготовке к суточным нарядам
+  2) курсовой офицер
+  -
+  3) курсант
+  - возможность скачивания и ознакомления с НПА по подготовке к суточным нарядам
+
+  {% endblock %}
+
+</main>
+</body>
+</html>

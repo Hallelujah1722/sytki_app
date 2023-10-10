@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+# наследование от страницы base.html
+
+<body>
+<main>
+
+        {% block body %}
+  <div class="d-flex flex-wrap container py-4 text-center align-items-center">
+    <form class="row g-3 py-4 needs-validation" novalidate>
+      <div class="col-md-4 py-2">
+        <label for="validationCustom01" class="form-label">Имя</label>
+        <input type="text" class="form-control" id="validationCustom01" value="" required>
+      </div>
+      <div class="col-md-4 py-2">
+        <label for="validationCustom02" class="form-label">Фамилия</label>
+        <input type="text" class="form-control" id="validationCustom02" value="" required>
+      </div>
+      <div class="col-md-4 py-2">
+        <label for="validationCustom03" class="form-label">Отчество</label>
+        <input type="text" class="form-control" id="validationCustom03" value="" required>
+      </div>
+
+      <div class="col-md-2 py-2">
+        <label for="validationCustom04" class="form-label">Дата рождения</label>
+        <input type="date" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom04" value="" required>
+      </div>
+
+      <div class="col-md-2 py-2">
+        <label for="validationCustom05" class="form-label">Номер телефона</label>
+        <input type="tel" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom05" value="" required
+               autofocus="autofocus" required="required" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
+               maxlength="50" placeholder="+7..." name="phone_number" value="">
+      </div>
+
+      <div class="col-md-3 py-2">
+        <label for="validationCustom06" class="form-label">Telegram-аккаунт</label>
+        <input type="email" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp">
+      </div>
+
+      <div class="col-md-4 py-2">
+        <label for="inputGroupFile07" class="form-label">Фотография курсанта</label>
+        <div class="input-group mb-3">
+          <input type="file" class="form-control" id="inputGroupFile07">
+        </div>
+      </div>
+
+      <div class="col-md-1 py-2">
+        <label for="validationCustom08" class="form-label">Пол</label>
+        <select class="form-select" id="validationCustom08" required>
+          <option selected disabled value=""></option>
+          <option>М</option>
+          <option>Ж</option>
+        </select>
+      </div>
+
+      <div class="col-md-3 py-2">
+        <label for="validationCustom09" class="form-label">Звание</label>
+        <select class="form-select" id="validationCustom09" required>
+          <option selected disabled value=""></option>
+          <option>рядовой полиции</option>
+          <option>младший сержант полиции</option>
+          <option>сержант полиции</option>
+          <option>младший лейтенант полиции</option>
+        </select>
+      </div>
+
+      <div class="col-md-3 py-2">
+        <label for="validationCustom010" class="form-label">Должность</label>
+        <select class="form-select" id="validationCustom010" required>
+          <option selected disabled value=""></option>
+          <option>курсант</option>
+          <option>командир отделения</option>
+          <option>заместитель командира взвода</option>
+          <option>слушатель</option>
+        </select>
+      </div>
+
+      <div class="col-md-1 py-2">
+        <label for="validationCustom011" class="form-label">Командир</label>
+        <select class="form-select" id="validationCustom011" required>
+          <option selected disabled value=""></option>
+          <option>да</option>
+          <option>нет</option>
+        </select>
+      </div>
+
+      <div class="col-md-1 py-2">
+        <label for="validationCustom012" class="form-label">Курс</label>
+        <select class="form-select" id="validationCustom012" required>
+          <option selected disabled value=""></option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+
+      <div class="col-md-2 py-2">
+        <label for="validationCustom013" class="form-label">Взвод</label>
+        <select class="form-select" id="validationCustom013" required>
+          <option selected disabled value=""></option>
+          <option>901</option>
+          <option>902</option>
+          <option>903</option>
+          <option>904</option>
+          <option>911</option>
+          <option>912</option>
+          <option>913</option>
+          <option>921</option>
+          <option>922</option>
+          <option>923</option>
+          <option>931</option>
+          <option>932</option>
+          <option>933</option>
+        </select>
+      </div>
+
+      <div class="col-md-2 py-2">
+        <label for="validationCustom014" class="form-label">Факультет</label>
+        <select class="form-select" id="validationCustom014" required>
+          <option selected disabled value=""></option>
+          <option>ФПСОИБ</option>
+        </select>
+      </div>
+
+      <div class="col-md-3 py-2">
+        <label for="validationCustom015" class="form-label">Номер карточки заместителя</label>
+        <input type="text" class="form-control" id="validationCustom015" value="" required>
+      </div>
+
+      <div class="col-md-3 py-2">
+        <label for="validationCustom016" class="form-label">Количество суток в ПД</label>
+        <input type="text" class="form-control" id="validationCustom016" value="" required>
+      </div>
+
+      <div class="col-md-3 py-2">
+        <label for="validationCustom017" class="form-label">Количество суток в КПП</label>
+        <input type="text" class="form-control" id="validationCustom017" value="" required>
+      </div>
+
+      <div class="col-md-3 py-2">
+        <label for="validationCustom018" class="form-label">Количество суток в патруле</label>
+        <input type="text" class="form-control" id="validationCustom018" value="" required>
+      </div>
+
+      <div class="col-md-3 py-2">
+        <label for="validationCustom019" class="form-label">Количество дней службы</label>
+        <input type="text" class="form-control" id="validationCustom019" value="" required>
+      </div>
+
+      <div class="col-md-3 py-2">
+        <label for="validationCustom020" class="form-label">Количество будних дней в сутках</label>
+        <input type="text" class="form-control" id="validationCustom020" value="" required>
+      </div>
+
+      <div class="col-md-3 py-2">
+        <label for="validationCustom021" class="form-label">Количество выходных дней в сутках</label>
+        <input type="text" class="form-control" id="validationCustom021" value="" required>
+      </div>
+
+      <div class="col-md-3 py-2">
+        <label for="validationCustom022" class="form-label">Количество праздничных дней в сутках</label>
+        <input type="text" class="form-control" id="validationCustom022" value="" required>
+      </div>
+
+      <div class="col-12 py-4">
+        <button class="btn btn-primary" type="submit">Сохранить анкету</button>
+      </div>
+    </form>
+  </div>
+
+  Функцинал вкладки:
+  1) админ
+  -
+  2) курсовой офицер
+  - создание анкеты курсанта с данными о сутках
+  - редактирование уже существующей анкеты курсанта (из статистики ссылка на заполненную анкету)
+  3) курсант
+  -
+      {% endblock %}
+
+
+</main>
+</body>
+</html>

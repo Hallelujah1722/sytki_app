@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+# наследование от страницы base.html
+
+<body>
+<main>
+
+        {% block body %}
+  <div class="d-flex flex-wrap container py-4 text-center align-items-center">
+    <form class="row g-3 py-4 needs-validation" novalidate>
+
+      <div class="container text-center">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-2">
+            <label for="validationCustom01" class="form-label">Год</label>
+          </div>
+          <div class="col-md-2">
+            <label for="validationCustom02" class="form-label">Месяц</label>
+          </div>
+          <div class="col-md-2">
+            <label for="validationCustom03" class="form-label">Количество дней</label>
+          </div>
+          <!--ИЛИ ФОРМИРОВАТЬ МЕСЯЦ НАРЯДА С ВЫГРУЗКОЙ ИЗ КАЛЕНДАРЯ???-->
+          <div class="col-md-2">
+            <label for="validationCustom02" class="form-label"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-center">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-2">
+            <input type="text" class="form-control" id="validationCustom01" value="" required>
+          </div>
+          <div class="col-md-2">
+            <select class="form-select" id="validationCustom02" required>
+              <option selected disabled value="">Выберите...</option>
+              <option>январь</option>
+              <option>февраль</option>
+              <option>март</option>
+              <option>апрель</option>
+              <option>май</option>
+              <option>июнь</option>
+              <option>июль</option>
+              <option>август</option>
+              <option>сентябрь</option>
+              <option>октябрь</option>
+              <option>ноябрь</option>
+              <option>декабрь</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <input type="text" class="form-control" id="validationCustom03" value="" required>
+          </div>
+          <!--ИЛИ ФОРМИРОВАТЬ МЕСЯЦ НАРЯДА С ВЫГРУЗКОЙ ИЗ КАЛЕНДАРЯ???-->
+          <div class="col-md-2">
+            <input class="btn btn-primary" type="submit" value="Сгенерировать месяц">
+          </div>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="container text-center">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-1 py-4">
+            <label class="form-label">Дата</label>
+          </div>
+          <div class="col-md-2 py-4 form-check-inline">
+            <label class="form-label">901 взвод</label>
+          </div>
+          <div class="col-md-2 py-4 form-check-inline">
+            <label class="form-label">902 взвод</label>
+          </div>
+          <div class="col-md-2 py-4 form-check-inline">
+            <label class="form-label">903 взвод</label>
+          </div>
+          <div class="col-md-2 py-4 form-check-inline">
+            <label class="form-label">904 взвод</label>
+          </div>
+          <div class="col-md-2 py-4 form-check-inline">
+            <label class="form-label">Основание</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-center">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-1 py-4">
+            <label for="validationCustom01" class="form-label">01.09.2023</label>
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1">
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option2">
+          </div>
+          <div class="col-md-2 py-0">
+            <select class="form-select" id="validationCustom04" required>
+              <option selected disabled value="">Выберите...</option>
+              <option>выезд в березки</option>
+              <option>выезд в рузу</option>
+              <option>экзамен</option>
+              <option>зачет</option>
+              <option>другое</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-center">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-1 py-2">
+            <label for="validationCustom01" class="form-label">02.09.2023</label>
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1">
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option2">
+          </div>
+          <div class="col-md-2 py-0">
+            <select class="form-select" id="validationCustom04" required>
+              <option selected disabled value="">Выберите...</option>
+              <option>выезд в березки</option>
+              <option>выезд в рузу</option>
+              <option>экзамен</option>
+              <option>зачет</option>
+              <option>другое</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-center">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-1 py-2">
+            <label for="validationCustom01" class="form-label">03.09.2023</label>
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1">
+          </div>
+          <div class="col-md-2 py-1 form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option2">
+          </div>
+          <div class="col-md-2 py-0">
+            <select class="form-select" id="validationCustom04" required>
+              <option selected disabled value="">Выберите...</option>
+              <option>выезд в березки</option>
+              <option>выезд в рузу</option>
+              <option>экзамен</option>
+              <option>зачет</option>
+              <option>другое</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="container text-center">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-2 py-4">
+            <label for="validationCustom01" class="form-label">Список курса</label>
+          </div>
+          <div class="col-md-4 py-4">
+            <label for="validationCustom01" class="form-label">Период нетрудоспособности</label>
+          </div>
+          <div class="col-md-3 py-4">
+            <label for="validationCustom01" class="form-label">Основание не привлечения</label>
+          </div>
+          <div class="col-md-3 py-4">
+            <label for="validationCustom01" class="form-label">Прикрепите файл</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-center">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-2 py-1">
+            <label for="validationCustom01" class="form-label">Иванов И.И.</label>
+          </div>
+          <div class="col-md-2 py-1">
+            <input type="date" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom04" value="" required>
+          </div>
+          <div class="col-md-2 py-1">
+            <input type="date" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom04" value="" required>
+          </div>
+          <div class="col-md-3 py-1">
+            <select class="form-select" id="validationCustom06" required>
+              <option selected disabled value="">Выберите...</option>
+              <option>рапорт</option>
+              <option>болезнь</option>
+              <option>командировка</option>
+            </select>
+          </div>
+          <div class="col-md-3 py-1">
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="inputGroupFile01">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-center">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-2 py-1">
+            <label for="validationCustom01" class="form-label">Сидоров С.С.</label>
+          </div>
+          <div class="col-md-2 py-1">
+            <input type="date" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom04" value="" required>
+          </div>
+          <div class="col-md-2 py-1">
+            <input type="date" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom04" value="" required>
+          </div>
+          <div class="col-md-3 py-1">
+            <select class="form-select" id="validationCustom06" required>
+              <option selected disabled value="">Выберите...</option>
+              <option>рапорт</option>
+              <option>болезнь</option>
+              <option>командировка</option>
+            </select>
+          </div>
+          <div class="col-md-3 py-1">
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="inputGroupFile01">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-center">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-2 py-1">
+            <label for="validationCustom01" class="form-label">Петров П.П.</label>
+          </div>
+          <div class="col-md-2 py-1">
+            <input type="date" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom04" value="" required>
+          </div>
+          <div class="col-md-2 py-1">
+            <input type="date" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom04" value="" required>
+          </div>
+          <div class="col-md-3 py-1">
+            <select class="form-select" id="validationCustom06" required>
+              <option selected disabled value="">Выберите...</option>
+              <option>рапорт</option>
+              <option>болезнь</option>
+              <option>командировка</option>
+            </select>
+          </div>
+          <div class="col-md-3 py-1">
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="inputGroupFile01">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 py-4">
+        <button class="btn btn-primary" type="submit">Отправить исключения</button>
+      </div>
+    </form>
+  </div>
+
+  Функцинал вкладки:
+  1) админ
+  - вывод всех оснований
+  2) курсовой офицер
+  - исключения на взвода (выездные занятия, экзамены, зачеты)
+  - исключения на курсантов (список курсантов с возможность обозначения периода, в который не могут ходить в сутки по той или иной причине с прикреплением основания освобождения)
+  - на основании исключений сгенерировать нагрузку по курсам!!! после начать расстановку!!!
+  3) курсант
+  -
+
+  {% endblock %}
+
+</main>
+</body>
+</html>
