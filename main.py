@@ -37,9 +37,6 @@ def video():
 @app.route("/anketa", methods = ['POST','GET'])
 def anketa():
     if request.method == 'POST':
-        username = request.form['username']
-        phone_number = request.form['phone_number']
-        photo_kursant = request.form['photo_kursant']
         print(request.form)
     return render_template("anketa.html", title="Анкета")
 
