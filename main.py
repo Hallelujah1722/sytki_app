@@ -38,7 +38,10 @@ def video():
 @app.route("/anketa", methods = ['POST','GET'])
 def anketa():
     if request.method == 'POST':
-        print(request.form)
+        print(request.form['surname'])
+        cursor=connection.cursor()
+        cursor.execute("INSERT INTO kyrsants (surname) "
+                       "VALUES (" + "'" +request.form['surname']+ "'" + ");")
     return render_template("anketa.html", title="Анкета")
 
 
