@@ -1,29 +1,28 @@
-CREATE DATABASE SYTKI;
-
 CREATE TABLE kyrsants (
     id_kyrsant SERIAL PRIMARY KEY NOT NULL,
     surname VARCHAR(255),
     name VARCHAR(255),
-    otchestvo VARCHAR(255),
+    middlename VARCHAR(255),
     birthday DATE,
     phone_number VARCHAR(15),
-    telegram_nik VARCHAR(255),
+    telegram VARCHAR(255),
     faculty VARCHAR(255),
-    kurs INT,
+    course INT,
     platoon INT,
     male CHAR(1),
     photo BYTEA,
-    zvanie VARCHAR(255),
-    dolzhnost VARCHAR(255),
+    title VARCHAR(255),
+    post VARCHAR(255),
     naryad_pd BOOLEAN,
+    commander BOOLEAN,
     card_number INT,
-    sutki_pd INT,
-    sutki_kpp INT,
-    sutki_patrul INT,
-    days_of_sluzba INT,
-    days_of_sutki INT,
-    sutki_on_weekends INT,
-    sutki_on_holidays INT);
+    sytki_pd INT,
+    sytki_kpp INT,
+    sytki_patrol INT,
+    days_of_sluzhba INT,
+    days_of_sytki INT,
+    sytki_on_weekends INT,
+    sytki_on_holidays INT);
 
 CREATE TABLE vhod (
     id_vhod SERIAL PRIMARY KEY NOT NULL,
