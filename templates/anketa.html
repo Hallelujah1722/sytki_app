@@ -6,23 +6,23 @@
 
         {% block body %}
   <div class="d-flex flex-wrap container py-4 text-center align-items-center">
-    <form class="row g-3 py-4 needs-validation" novalidate>
+    <form action="/anketa" method="POST" autocomplete="off" class="row g-3 py-4 needs-validation" novalidate>
       <div class="col-md-4 py-2">
         <label for="validationCustom01" class="form-label">Имя</label>
-        <input type="text" class="form-control" id="validationCustom01" value="" required>
+        <input type="text" class="form-control" id="validationCustom01" name="username" value="" required>
       </div>
       <div class="col-md-4 py-2">
         <label for="validationCustom02" class="form-label">Фамилия</label>
-        <input type="text" class="form-control" id="validationCustom02" value="" required>
+        <input type="text" class="form-control" id="validationCustom02" name="surname" value="" required>
       </div>
       <div class="col-md-4 py-2">
         <label for="validationCustom03" class="form-label">Отчество</label>
-        <input type="text" class="form-control" id="validationCustom03" value="" required>
+        <input type="text" class="form-control" id="validationCustom03" name="otchestvo" value="" required>
       </div>
 
       <div class="col-md-2 py-2">
         <label for="validationCustom04" class="form-label">Дата рождения</label>
-        <input type="date" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom04" value="" required>
+        <input type="date" pattern="\d{4}-\d{2}-\d{2}" class="form-control" id="validationCustom04" name="birthday" value="" required>
       </div>
 
       <div class="col-md-2 py-2">
@@ -34,19 +34,19 @@
 
       <div class="col-md-3 py-2">
         <label for="validationCustom06" class="form-label">Telegram-аккаунт</label>
-        <input type="email" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp">
+        <input type="email" class="form-control" id="exampleInputEmail6" name="telegram_nik" aria-describedby="emailHelp">
       </div>
 
       <div class="col-md-4 py-2">
         <label for="inputGroupFile07" class="form-label">Фотография курсанта</label>
         <div class="input-group mb-3">
-          <input type="file" class="form-control" id="inputGroupFile07">
+          <input type="file" class="form-control" id="inputGroupFile07" name="photo_kursant">
         </div>
       </div>
 
       <div class="col-md-1 py-2">
         <label for="validationCustom08" class="form-label">Пол</label>
-        <select class="form-select" id="validationCustom08" required>
+        <select class="form-select" id="validationCustom08" name="male" required>
           <option selected disabled value=""></option>
           <option>М</option>
           <option>Ж</option>
@@ -55,7 +55,7 @@
 
       <div class="col-md-3 py-2">
         <label for="validationCustom09" class="form-label">Звание</label>
-        <select class="form-select" id="validationCustom09" required>
+        <select class="form-select" id="validationCustom09" name="zvanie" required>
           <option selected disabled value=""></option>
           <option>рядовой полиции</option>
           <option>младший сержант полиции</option>
@@ -66,7 +66,7 @@
 
       <div class="col-md-3 py-2">
         <label for="validationCustom010" class="form-label">Должность</label>
-        <select class="form-select" id="validationCustom010" required>
+        <select class="form-select" id="validationCustom010" name="dolzhnost" required>
           <option selected disabled value=""></option>
           <option>курсант</option>
           <option>командир отделения</option>
@@ -86,7 +86,7 @@
 
       <div class="col-md-1 py-2">
         <label for="validationCustom012" class="form-label">Курс</label>
-        <select class="form-select" id="validationCustom012" required>
+        <select class="form-select" id="validationCustom012" name="kurs" required>
           <option selected disabled value=""></option>
           <option>1</option>
           <option>2</option>
@@ -98,7 +98,7 @@
 
       <div class="col-md-2 py-2">
         <label for="validationCustom013" class="form-label">Взвод</label>
-        <select class="form-select" id="validationCustom013" required>
+        <select class="form-select" id="validationCustom013" name="platoon" required>
           <option selected disabled value=""></option>
           <option>901</option>
           <option>902</option>
@@ -118,7 +118,7 @@
 
       <div class="col-md-2 py-2">
         <label for="validationCustom014" class="form-label">Факультет</label>
-        <select class="form-select" id="validationCustom014" required>
+        <select class="form-select" id="validationCustom014" name="faculty" required>
           <option selected disabled value=""></option>
           <option>ФПСОИБ</option>
         </select>
@@ -126,42 +126,42 @@
 
       <div class="col-md-3 py-2">
         <label for="validationCustom015" class="form-label">Номер карточки заместителя</label>
-        <input type="text" class="form-control" id="validationCustom015" value="" required>
+        <input type="text" class="form-control" id="validationCustom015" value="" name="card_number" required>
       </div>
 
       <div class="col-md-3 py-2">
         <label for="validationCustom016" class="form-label">Количество суток в ПД</label>
-        <input type="text" class="form-control" id="validationCustom016" value="" required>
+        <input type="text" class="form-control" id="validationCustom016" value="" name="naryad_pd" required>
       </div>
 
       <div class="col-md-3 py-2">
         <label for="validationCustom017" class="form-label">Количество суток в КПП</label>
-        <input type="text" class="form-control" id="validationCustom017" value="" required>
+        <input type="text" class="form-control" id="validationCustom017" value="" name="sutki_kpp" required>
       </div>
 
       <div class="col-md-3 py-2">
         <label for="validationCustom018" class="form-label">Количество суток в патруле</label>
-        <input type="text" class="form-control" id="validationCustom018" value="" required>
+        <input type="text" class="form-control" id="validationCustom018" value="" name="sutki_patrul" required>
       </div>
 
       <div class="col-md-3 py-2">
         <label for="validationCustom019" class="form-label">Количество дней службы</label>
-        <input type="text" class="form-control" id="validationCustom019" value="" required>
+        <input type="text" class="form-control" id="validationCustom019" value="" name="days_of_sluzba" required>
       </div>
 
       <div class="col-md-3 py-2">
         <label for="validationCustom020" class="form-label">Количество будних дней в сутках</label>
-        <input type="text" class="form-control" id="validationCustom020" value="" required>
+        <input type="text" class="form-control" id="validationCustom020" value="" name="days_of_sutki" required>
       </div>
 
       <div class="col-md-3 py-2">
         <label for="validationCustom021" class="form-label">Количество выходных дней в сутках</label>
-        <input type="text" class="form-control" id="validationCustom021" value="" required>
+        <input type="text" class="form-control" id="validationCustom021" value="" name="sutki_on_weekends" required>
       </div>
 
       <div class="col-md-3 py-2">
         <label for="validationCustom022" class="form-label">Количество праздничных дней в сутках</label>
-        <input type="text" class="form-control" id="validationCustom022" value="" required>
+        <input type="text" class="form-control" id="validationCustom022" value="" name="sutki_on_holidays" required>
       </div>
 
       <div class="col-12 py-4">
