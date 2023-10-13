@@ -18,7 +18,7 @@ try:
     print(connection.get_dsn_parameters(), "\n")
     print("Вы подключены к - PostgreSQL 16.0 ", "\n")
     cursor.execute("SELECT datname FROM pg_database;")
-    cursor.execute("SELECT * FROM kyrsants;")
+    #cursor.execute("SELECT * FROM kyrsants;")
     print(cursor.fetchall())
 
 except (Exception, Error) as error:
@@ -26,5 +26,5 @@ except (Exception, Error) as error:
 finally:
     if connection:
         cursor.close()
-        connection.close()
-        print("Соединение с PostgreSQL закрыто")
+        #connection.close()
+        #print("Соединение с PostgreSQL закрыто")
