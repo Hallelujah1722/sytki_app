@@ -32,15 +32,26 @@ finally:
         #connection.close()
         #print("Соединение с PostgreSQL закрыто")
 
-def LogDB(email):
+def LogDB(email):  #функция поиска пароля в бд по email
     cursor = connection.cursor()
     cursor.execute("SELECT password FROM vhod WHERE login ='"+email+"' LIMIT 1;")
     psw = cursor.fetchone()
     if not psw:
-        print("Ошибка извлечения данных логина" + str(Error))
+        print("Ошибка извлечения данных логина")
         return False
     else:
         password_db = psw[0]
         return password_db
 
 
+def Session_log(email):
+    cursor = connection.cursor()
+    cursor.execute("SELECT login FROM vhod WHERE login ='" + email + "' LIMIT 1;")
+    log = cursor.fetchone()
+    if not log:
+        print("Ошибка извлечения данных логина")
+        return False
+    else:
+        print("Проверка сессии прошла успешно")
+        logging = log[0]
+        return logging

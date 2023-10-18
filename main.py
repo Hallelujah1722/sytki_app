@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_login import LoginManager,login_user, UserMixin, logout_user,login_required, current_user
+from flask import Flask, render_template, request, redirect, url_for
+from flask_login import LoginManager,login_user, UserMixin, logout_user, login_required, current_user
 
 from db_connect import *
 # из библиотеки импортируем класc
@@ -13,18 +13,22 @@ app.config["SECRET_KEY"] = "secretkey"
 
 
 login_manager = LoginManager(app)
+
+
 class User(UserMixin):
     pass
 
 @login_manager.user_loader  #проверяет авторизацию юзера при каждом запросе к серверу
 def user_loader(email):
-    user = User()
-    user.id = email
-    print(user.id,"LOGINMANAGER")
+    if email == Session_log(email):
+        user = User()
+        user.id = email
+        print(user.id,"LOGINMANAGER")
     return user
 
 
 @app.route('/logout') #функция выхода и аккаунта, если юзер нажимает кнопку, пользователя направялет на страницу разлога и затем на страницу логина
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
@@ -41,13 +45,12 @@ def index():
         email = request.form['email']
         password = request.form['password']
         if password == LogDB(email): #logdb прописан в db_connect и ищет в бд пользователя по email, если нашел, то возвращает пароль и сравнивает
-            print(email, password)
             user = User()
             user.id = email
             login_user(user)
             return redirect(url_for('lk')) #при успешном логине юзер направляется в кабинет
         else:
-            flash("Неверная пара логин/пароль", "error")
+            print("ЛОГИН ИЛИ ПАРОЛЬ ВВЕДЕНЫ НЕВЕРНО!")
     return render_template("index.html", title="Авторизация")
 
 
@@ -58,16 +61,19 @@ def lk():
 
 
 @app.route("/statistic")
+@login_required
 def statistic():
     return render_template("statistic.html", title="Статистика")
 
 
 @app.route("/video")
+@login_required
 def video():
     return render_template("video.html", title="Видео")
 
 
 @app.route("/anketa", methods = ['POST','GET'])
+@login_required
 def anketa(): #данные с формы анкеты загружаются сюда и отправляются в бд
     if request.method == 'POST':
         cursor = connection.cursor()
@@ -102,16 +108,19 @@ def anketa(): #данные с формы анкеты загружаются с
 
 
 @app.route("/create")
+@login_required
 def create():
     return render_template("create.html", title="Расстановка")
 
 
 @app.route("/iskl")
+@login_required
 def iskl():
     return render_template("iskl.html", title="Исключения")
 
 
 @app.route("/documents")
+@login_required
 def documents():
     return render_template("documents.html", title="Документы")
 
