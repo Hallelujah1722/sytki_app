@@ -1,24 +1,56 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_login import LoginManager,login_user, UserMixin, logout_user,login_required, current_user
+
 from db_connect import *
 # из библиотеки импортируем класc
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "secretkey"
 # создаем приложение, которое равно конструктору класса Flask с именем приложения. name - директива,
 # которая указывает на имя текущего файла
 
 #бд подключена, закинул в отдельный файл db_connect, подключается пока к локалке
-#Если бд мешает, заккоментируй 2ую строку
+#Если бд мешает, заккоментируй 2ую строкe
 
+
+login_manager = LoginManager(app)
+class User(UserMixin):
+    pass
+
+@login_manager.user_loader  #проверяет авторизацию юзера при каждом запросе к серверу
+def user_loader(email):
+    user = User()
+    user.id = email
+    print(user.id,"LOGINMANAGER")
+    return user
+
+
+@app.route('/logout') #функция выхода и аккаунта, если юзер нажимает кнопку, пользователя направялет на страницу разлога и затем на страницу логина
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 # декоратор вызывает ссылку (переход)
 # для создания страницы объвляем функцию с названием страницы и возвращаем значение (ссылку на сайт)
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods = ['POST','GET'] )
+@app.route('/index', methods = ['POST','GET'])
 def index():
+    if current_user.is_authenticated: #если пользователь уже был авторизован, он не попадет на страницу логина, пока не выйдет из аккаунта
+       return redirect(url_for('lk'))
+    elif request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        print(email, password)
+        user = User()
+        user.id = email
+        login_user(user)
+        return redirect(url_for('lk')) #при успешном логине юзер направляется в кабинет
+    flash("Неверная пара логин/пароль", "error")
     return render_template("index.html", title="Авторизация")
 
 
 @app.route("/lk")
+@login_required
 def lk():
     return render_template("lk.html", title="Личный кабинет")
 
@@ -80,6 +112,8 @@ def iskl():
 @app.route("/documents")
 def documents():
     return render_template("documents.html", title="Документы")
+
+
 
 
 if __name__ == '__main__':
