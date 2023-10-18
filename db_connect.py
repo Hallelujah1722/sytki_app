@@ -1,7 +1,10 @@
 import psycopg2
 from psycopg2 import Error #обработчик ошибок
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-from flask_sqlalchemy import SQLAlchemy
+
+
+
+
 
 try:
     #Подключение к бд PostgeSQL(пока что на локальном сервере)
@@ -17,9 +20,9 @@ try:
     print("Подключение к PostgreSQL")
     print(connection.get_dsn_parameters(), "\n")
     print("Вы подключены к - PostgreSQL 16.0 ", "\n")
-    cursor.execute("SELECT datname FROM pg_database;")
+    #cursor.execute("SELECT datname FROM pg_database;")
     #cursor.execute("SELECT * FROM kyrsants;")
-    print(cursor.fetchall())
+    #print(cursor.fetchall())
 
 except (Exception, Error) as error:
     print("Ошибка при работе с PostgreSQL", error) #вывод ошибок
@@ -28,3 +31,16 @@ finally:
         cursor.close()
         #connection.close()
         #print("Соединение с PostgreSQL закрыто")
+
+def LogDB(email):
+    cursor = connection.cursor()
+    cursor.execute("SELECT password FROM vhod WHERE login ='"+email+"' LIMIT 1;")
+    psw = cursor.fetchone()
+    if not psw:
+        print("Ошибка извлечения данных логина" + str(Error))
+        return False
+    else:
+        password_db = psw[0]
+        return password_db
+
+

@@ -40,12 +40,14 @@ def index():
     elif request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        print(email, password)
-        user = User()
-        user.id = email
-        login_user(user)
-        return redirect(url_for('lk')) #при успешном логине юзер направляется в кабинет
-    flash("Неверная пара логин/пароль", "error")
+        if password == LogDB(email): #logdb прописан в db_connect и ищет в бд пользователя по email, если нашел, то возвращает пароль и сравнивает
+            print(email, password)
+            user = User()
+            user.id = email
+            login_user(user)
+            return redirect(url_for('lk')) #при успешном логине юзер направляется в кабинет
+        else:
+            flash("Неверная пара логин/пароль", "error")
     return render_template("index.html", title="Авторизация")
 
 
