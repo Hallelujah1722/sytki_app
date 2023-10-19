@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import LoginManager,login_user, UserMixin, logout_user, login_required, current_user
 
 from db_connect import *
@@ -63,8 +63,13 @@ def lk():
 @app.route("/statistic")
 @login_required
 def statistic():
-    return render_template("statistic.html", title="Статистика")
-
+    cur_user = current_user.id
+    if Post_user(cur_user) == 'admin' or 'officer':
+        print("Админ определен успешно")
+        return render_template("statistic.html", title="Статистика")
+    else:
+        print("Вы не являетесь админом, P.S. можно привязать другие функции")
+        return redirect(url_for('lk'))
 
 @app.route("/video")
 @login_required
@@ -77,7 +82,7 @@ def video():
 def anketa(): #данные с формы анкеты загружаются сюда и отправляются в бд
     if request.method == 'POST':
         cursor = connection.cursor()
-        cursor.execute("INSERT INTO kyrsants (surname, name, middlename, birthday, phone_number, telegram, faculty,"
+        cursor.execute("INSERT INTO kyrsants (surname, name, middlename, birthday, phone_number, login_email, faculty,"
                        "course, platoon, male, photo, title, post, commander, card_number, sytki_pd, "
                        "sytki_kpp, sytki_patrol, days_of_sluzhba, days_of_sytki, sytki_on_weekends, sytki_on_holidays) "
                        "VALUES (" + "'" + request.form['surname'] + "'," +

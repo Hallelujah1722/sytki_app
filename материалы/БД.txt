@@ -5,7 +5,7 @@ CREATE TABLE kyrsants (
     middlename VARCHAR(255),
     birthday DATE,
     phone_number VARCHAR(15),
-    telegram VARCHAR(255),
+    login_email VARCHAR(255),
     faculty VARCHAR(255),
     course INT,
     platoon INT,
