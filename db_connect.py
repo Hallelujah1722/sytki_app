@@ -49,14 +49,14 @@ def Session_log(email): #функция проверки наличия логи
     cursor.execute("SELECT login FROM vhod WHERE login ='" + email + "' LIMIT 1;")
     log = cursor.fetchone()
     if not log:
-        print("Провеерка сессии провалилась")
+        print("Проверка сессии провалилась")
         return False
     else:
         print("Проверка сессии прошла успешно")
         logging = log[0]
         return logging
 
-def Post_user(cur_user): #функция извлечения из бд Статуса пользователя, принимает email из Session_log
+def Post_user(cur_user): #функция извлечения из бд Статуса пользователя
     cursor = connection.cursor()
     cursor.execute("SELECT post FROM kyrsants WHERE login_email ='" + cur_user + "' LIMIT 1;")
     post = cursor.fetchone()

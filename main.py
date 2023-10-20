@@ -18,6 +18,7 @@ login_manager = LoginManager(app)
 class User(UserMixin):
     pass
 
+
 @login_manager.user_loader  #проверяет авторизацию юзера при каждом запросе к серверу
 def user_loader(email):
     if email == Session_log(email):
@@ -57,29 +58,31 @@ def index():
 @app.route("/lk")
 @login_required
 def lk():
-    return render_template("lk.html", title="Личный кабинет")
+    cur_user = current_user.id
+    post = Post_user(cur_user)
+    return render_template("lk.html", title="Личный кабинет",post=post)
 
 
 @app.route("/statistic")
 @login_required
 def statistic():
     cur_user = current_user.id
-    if Post_user(cur_user) == 'admin' or 'officer':
-        print("Админ определен успешно")
-        return render_template("statistic.html", title="Статистика")
-    else:
-        print("Вы не являетесь админом, P.S. можно привязать другие функции")
-        return redirect(url_for('lk'))
+    post = Post_user(cur_user)
+    return render_template("statistic.html", title="Статистика",post=post)
 
 @app.route("/video")
 @login_required
 def video():
-    return render_template("video.html", title="Видео")
+    cur_user = current_user.id
+    post = Post_user(cur_user)
+    return render_template("video.html", title="Видео",post=post)
 
 
 @app.route("/anketa", methods = ['POST','GET'])
 @login_required
 def anketa(): #данные с формы анкеты загружаются сюда и отправляются в бд
+    cur_user = current_user.id
+    post = Post_user(cur_user)
     if request.method == 'POST':
         cursor = connection.cursor()
         cursor.execute("INSERT INTO kyrsants (surname, name, middlename, birthday, phone_number, login_email, faculty,"
@@ -109,27 +112,31 @@ def anketa(): #данные с формы анкеты загружаются с
                                     "'" + request.form['sytki_on_holidays'] + "'" +
                                 ");")
         cursor.close()
-    return render_template("anketa.html", title="Анкета")
+    return render_template("anketa.html", title="Анкета", post=post)
 
 
 @app.route("/create")
 @login_required
 def create():
-    return render_template("create.html", title="Расстановка")
+    cur_user = current_user.id
+    post = Post_user(cur_user)
+    return render_template("create.html", title="Расстановка", post=post)
 
 
 @app.route("/iskl")
 @login_required
 def iskl():
-    return render_template("iskl.html", title="Исключения")
+    cur_user = current_user.id
+    post = Post_user(cur_user)
+    return render_template("iskl.html", title="Исключения", post=post)
 
 
 @app.route("/documents")
 @login_required
 def documents():
-    return render_template("documents.html", title="Документы")
-
-
+    cur_user = current_user.id
+    post = Post_user(cur_user)
+    return render_template("documents.html", title="Документы", post=post)
 
 
 if __name__ == '__main__':
@@ -138,8 +145,3 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-'''
-@app.route('/user/<string:name>/<int:id>/<float:weight>')
-def user(name, id, weight):
-    return "Личный кабинет " + name + "-" + str(id) + "-" + str(weight)
-'''

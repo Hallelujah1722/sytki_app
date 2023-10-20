@@ -36,16 +36,24 @@
             <li><a href="{{ url_for('documents') }}" class="nav-link px-4 text-secondary">Документация</a></li>
             <li><a href="{{ url_for('video') }}" class="nav-link px-4 text-secondary">Видео</a></li>
             <li class="exit"><a href="#modal_exit"><i class="material-icons">exit_to_app</i></a></li>
-
-            <!--Для админа + -->
-            <li><a href="{{ url_for('create') }}" class="nav-link px-4 text-secondary">Расстановка</a></li>
-
-            <!--Для админа и курсового + -->
-            <li><a href="{{ url_for('iskl') }}" class="nav-link px-4 text-secondary">Исключения</a></li>
-            <li><a href="{{ url_for('statistic') }}" class="nav-link px-4 text-secondary">Статистика</a></li>
-
-            <!--Для курсового + -->
-            <li><a href="{{ url_for('anketa') }}" class="nav-link px-4 text-secondary">Анкеты</a></li>
+            {%if post == "admin" %}
+              <!--Для админа + -->
+             <li><a href="{{ url_for('create') }}" class="nav-link px-4 text-secondary">Расстановка</a></li>
+            {% endif %}
+            {%if post == "admin" %}
+              <!--Для админа и курсового + -->
+             <li><a href="{{ url_for('iskl') }}" class="nav-link px-4 text-secondary">Исключения</a></li>
+             <li><a href="{{ url_for('statistic') }}" class="nav-link px-4 text-secondary">Статистика</a></li>
+            {% endif %}
+            {%if post == "officer" %}
+              <!--Для админа и курсового + -->
+             <li><a href="{{ url_for('iskl') }}" class="nav-link px-4 text-secondary">Исключения</a></li>
+             <li><a href="{{ url_for('statistic') }}" class="nav-link px-4 text-secondary">Статистика</a></li>
+            {% endif %}
+            {%if post == "officer" %}
+              <!--Для курсового + -->
+             <li><a href="{{ url_for('anketa') }}" class="nav-link px-4 text-secondary">Анкеты</a></li>
+            {% endif %}
           {% endif %}
           {% endblock %}
         <ul>
