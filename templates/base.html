@@ -32,7 +32,13 @@
           <!--Подключить базу и в зависимости от учетной записи прописать доступ к вкладкам на сайте-->
 
             <!--Для всех-->
-            <li><a href="{{ url_for('lk') }}" class="nav-link px-4 text-white">Админ/Курсовой офицер/Личный кабинет</a></li>
+            {% if post == "admin"%}
+             <li><a href="{{ url_for('lk') }}" class="nav-link px-4 text-white">Админ/Личный кабинет</a></li>
+            {%elif post == "officer" %}
+             <li><a href="{{ url_for('lk') }}" class="nav-link px-4 text-white">Курсовой офицер/Личный кабинет</a></li>
+            {%else%}
+             <li><a href="{{ url_for('lk') }}" class="nav-link px-4 text-white">Личный кабинет</a></li>
+            {%endif%}
             <li><a href="{{ url_for('documents') }}" class="nav-link px-4 text-secondary">Документация</a></li>
             <li><a href="{{ url_for('video') }}" class="nav-link px-4 text-secondary">Видео</a></li>
             <li class="exit"><a href="#modal_exit"><i class="material-icons">exit_to_app</i></a></li>
