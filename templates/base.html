@@ -40,12 +40,7 @@
               <!--Для админа + -->
              <li><a href="{{ url_for('create') }}" class="nav-link px-4 text-secondary">Расстановка</a></li>
             {% endif %}
-            {%if post == "admin" %}
-              <!--Для админа и курсового + -->
-             <li><a href="{{ url_for('iskl') }}" class="nav-link px-4 text-secondary">Исключения</a></li>
-             <li><a href="{{ url_for('statistic') }}" class="nav-link px-4 text-secondary">Статистика</a></li>
-            {% endif %}
-            {%if post == "officer" %}
+            {%if post == "admin" or "admin" %}
               <!--Для админа и курсового + -->
              <li><a href="{{ url_for('iskl') }}" class="nav-link px-4 text-secondary">Исключения</a></li>
              <li><a href="{{ url_for('statistic') }}" class="nav-link px-4 text-secondary">Статистика</a></li>
