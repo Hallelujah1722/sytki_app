@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/kalendar.js')}}"></script>
+
 </head>
 
 <body>
@@ -31,21 +33,29 @@
 
           <!--Подключить базу и в зависимости от учетной записи прописать доступ к вкладкам на сайте-->
 
-            <!--Для всех-->
-            <li><a href="{{ url_for('lk') }}" class="nav-link px-4 text-white">Админ/Курсовой офицер/Личный кабинет</a></li>
+            <!--Для админа -->
+            {% if post == "admin"%}
+              <li><a href="{{ url_for('lk') }}" class="nav-link px-4 text-white">Админ</a></li>
+              <li><a href="{{ url_for('create') }}" class="nav-link px-4 text-secondary">Расстановка</a></li>
+              <li><a href="{{ url_for('iskl') }}" class="nav-link px-4 text-secondary">Исключения</a></li>
+              <li><a href="{{ url_for('statistic') }}" class="nav-link px-4 text-secondary">Статистика</a></li>
+
+            <!--Для курсового + -->
+            {%elif post == "officer" %}
+              <li><a href="{{ url_for('lk') }}" class="nav-link px-4 text-white">Курсовой офицер</a></li>
+              <li><a href="{{ url_for('iskl') }}" class="nav-link px-4 text-secondary">Исключения</a></li>
+              <li><a href="{{ url_for('statistic') }}" class="nav-link px-4 text-secondary">Статистика</a></li>
+              <li><a href="{{ url_for('anketa') }}" class="nav-link px-4 text-secondary">Анкеты</a></li>
+
+            {%else%}
+             <li><a href="{{ url_for('lk') }}" class="nav-link px-4 text-white">Личный кабинет</a></li>
+            {%endif%}
+
+            <!--Для всех -->
             <li><a href="{{ url_for('documents') }}" class="nav-link px-4 text-secondary">Документация</a></li>
             <li><a href="{{ url_for('video') }}" class="nav-link px-4 text-secondary">Видео</a></li>
             <li class="exit"><a href="#modal_exit"><i class="material-icons">exit_to_app</i></a></li>
 
-            <!--Для админа + -->
-            <li><a href="{{ url_for('create') }}" class="nav-link px-4 text-secondary">Расстановка</a></li>
-
-            <!--Для админа и курсового + -->
-            <li><a href="{{ url_for('iskl') }}" class="nav-link px-4 text-secondary">Исключения</a></li>
-            <li><a href="{{ url_for('statistic') }}" class="nav-link px-4 text-secondary">Статистика</a></li>
-
-            <!--Для курсового + -->
-            <li><a href="{{ url_for('anketa') }}" class="nav-link px-4 text-secondary">Анкеты</a></li>
           {% endif %}
           {% endblock %}
         <ul>
@@ -74,7 +84,7 @@
       <h5 class="modal_exit border-bottom ">Вы действительно хотите выйти из личного кабинета?</h5>
       <div class="col-md-3 text-end">
         <ul class="h5 nav col-12 me-lg-auto mb-2 mb-md-0">
-          <li><a href="{{ url_for('index') }}" type="button" class="btn btn-outline-primary me-2">Да</a></li>
+          <li><a href="{{ url_for('logout') }}" type="button" class="btn btn-outline-primary me-2">Да</a></li>
           <li><a href="" type="button" class="btn btn-primary">Нет</a></li>
         </ul>
       </div>
@@ -84,5 +94,13 @@
 </body>
 </html>
 
+<!--
+      {% if post == "admin"%}
 
+      {%elif post == "officer" %}
+
+      {%else%}
+
+      {%endif%}
+-->
 

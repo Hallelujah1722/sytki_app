@@ -1,1 +1,0 @@
-# sytki_app
