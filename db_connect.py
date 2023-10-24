@@ -3,7 +3,6 @@ from psycopg2 import Error #обработчик ошибок
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 
-
 try:
     #Подключение к бд PostgeSQL(пока что на локальном сервере)
     connection = psycopg2.connect(user = "postgres",
