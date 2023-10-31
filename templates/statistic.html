@@ -1,12 +1,6 @@
 {% extends 'base.html' %}
 # наследование от страницы base.html
 
-<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery-3.6.0.min.js')}}"></script>
-<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.js')}}"></script>
-<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.bootstrap5.js')}}"></script>
-
-<body>
-<main>
   {% block body %}
   <!--ДОБАВИТЬ СВЯЗИ К ТАБЛИЦЕ ИЗ БД-->
 
@@ -42,7 +36,6 @@
         </tbody>
     </table>
   </div>
-  {% endblock %}
 
     <script>
     $(document).ready(function () {
@@ -76,10 +69,11 @@
     });
     </script>
 
-</main>
-</body>
-</html>
+<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery-3.6.0.min.js')}}"></script>
+<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.js')}}"></script>
+<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.bootstrap5.js')}}"></script>
 
+  {% endblock %}
 <!--
 Функционал вкладки:
   1) админ

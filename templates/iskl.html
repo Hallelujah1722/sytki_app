@@ -1,13 +1,84 @@
 {% extends 'base.html' %}
 # наследование от страницы base.html
 
-<body>
-<main>
-
   {% block body %}
 
       {% if post == "admin"%}
       <!--Список всех исключений-->
+    <!--ДОБАВИТЬ СВЯЗИ К ТАБЛИЦЕ ИЗ БД-->
+
+    <div class="wrapper">
+      <table id="data1" class="table table-striped">
+          <thead>
+          <tr>
+              <th>Фамилия</th>
+              <th>Имя</th>
+              <th>Отчество</th>
+              <th>Курс</th>
+              <th>Взвод</th>
+              <th>Дата 1</th>
+              <th>Дата 2</th>
+              <th>Основание исключения</th>
+              <th>Файл</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+      </table>
+    </div>
+
+      <script>
+      $(document).ready(function () {
+        $('#data1').DataTable({
+          ajax: '/api/data',
+          columns: [
+            {data: 'surname'},
+            {data: 'name'},
+            {data: 'midname'},
+            {data: 'course'},
+            {data: 'platoon'},
+            {data: 'data1'},
+            {data: 'data2'},
+            {data: 'isk'},
+            {data: 'file_iskl'},
+          ],
+        });
+      });
+      </script>
+
+    <div class="wrapper">
+      <table id="data2" class="table table-striped">
+          <thead>
+          <tr>
+              <th>Курс</th>
+              <th>Взвод</th>
+              <th>Дата</th>
+              <th>Основание исключения</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+      </table>
+    </div>
+
+      <script>
+      $(document).ready(function () {
+        $('#data2').DataTable({
+          ajax: '/api/data',
+          columns: [
+            {data: 'course'},
+            {data: 'platoon'},
+            {data: 'data1'},
+            {data: 'isk'},
+          ],
+        });
+      });
+      </script>
+
+  <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery-3.6.0.min.js')}}"></script>
+  <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.js')}}"></script>
+  <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.bootstrap5.js')}}"></script>
+
 
       {%else%}
       <div class="d-flex flex-wrap container py-4 text-center align-items-center">
@@ -283,15 +354,9 @@
       </div>
     </form>
       </div>
-
       {%endif%}
 
   {% endblock %}
-
-</main>
-</body>
-</html>
-
 
 <!--
  Функционал вкладки:

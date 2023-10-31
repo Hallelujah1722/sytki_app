@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 # наследование от страницы base.html
 
-<body>
-<main>
   {% block body %}
 
       <div class="d-flex flex-wrap container text-center align-items-center justify-content-center">
@@ -22,39 +20,44 @@
             </div>
           </div>
 
-          <div class="col-12 py-2">
+          <div class="col-12 py-4">
             <button class="btn btn-primary" type="submit">Обновить список</button>
           </div>
-
-          <hr class="featurette-divider">
-      {%else%}
+            {%else%}
       {%endif%}
 
-          <div class="row g-2">
-            <ul class="list-unstyled ps-0">
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Федеральный закон «О полиции» от 07.02.2011 N 3-ФЗ.pdf') }}" rel="noopener" target="_blank">
-                Видео. Инструкция по действиям при обнаружении БПЛА.
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ «Об усилении охраны и обороны объектов и филиалов Московского университета МВД России имени В.Я. Кикотя» от 2 октября 2023 года.pdf') }}" rel="noopener" target="_blank">
-                Видео. Инструкция по действиям при обнаружении БПЛА.
-              </a>
-            </li>
-            </ul>
-          </div>
+
+            <div class="album py-5">
+              <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <div class="card-body mb-5">
+                              <video class="" width="100%" height="300" controls>
+                              <source src="{{ url_for('static', filename='video/IMG_7281_3.mp4') }}"></video>
+                              <p class="card-text">Инструкция по действиям при обнаружении БПЛА.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <div class="card-body mb-5">
+                              <video class="" width="100%" height="300" controls>
+                              <source src="{{ url_for('static', filename='video/IMG_7281_3.mp4') }}"></video>
+                              <p class="card-text">Инструкция по действиям при обнаружении ВВ/ВУ.</p>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
 
         </div>
     </form>
   </div>
 
   {% endblock %}
-
-</main>
-</body>
-</html>
-
 
 <!--
 Функционал вкладки:

@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 # наследование от страницы base.html
 
-<body>
-<main>
-
   {% block body %}
 
     <div class="d-flex flex-wrap container text-center align-items-center justify-content-center">
@@ -23,181 +20,379 @@
             </div>
           </div>
 
-          <div class="col-12 py-2">
+          <div class="col-12 py-4">
             <button class="btn btn-primary" type="submit">Обновить список</button>
           </div>
-
-          <hr class="featurette-divider">
-      {%else%}
+          {%else%}
       {%endif%}
 
-          <div class="row g-2">
-            <ul class="list-unstyled ps-0">
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Федеральный закон «О полиции» от 07.02.2011 N 3-ФЗ.pdf') }}" rel="noopener" target="_blank">
-                Федеральный закон «О полиции» от 07.02.2011 N 3-ФЗ
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ №1262 «Об утверждении инструкций» от 24.10.2020 года.pdf') }}" rel="noopener" target="_blank">
-                Приказ №1262 «Об утверждении инструкций» от 24.10.2020 года
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ №1263 «Об утверждении состава суточного наряда» от 24.10.2020 года.pdf') }}" rel="noopener" target="_blank">
-                Приказ №1263 «Об утверждении состава суточного наряда» от 24.10.2020 года
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ №569 «Об утверждении Положения по организации внутренней службы и внутреннего порядка» от 21.04.2023 года.pdf') }}" rel="noopener" target="_blank">
-                Приказ №569 «Об утверждении Положения по организации внутренней службы и внутреннего порядка» от 21.04.2023 года
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ «Об усилении охраны и обороны объектов и филиалов Московского университета МВД России имени В.Я. Кикотя» от 2 октября 2023 года.pdf') }}" rel="noopener" target="_blank">
-                Приказ «Об усилении охраны и обороны объектов и филиалов Московского университета МВД России имени В.Я. Кикотя» от 2 октября 2023 года
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №1 к приказу «Об усилении...» октябрь 2023 года.pdf') }}" rel="noopener" target="_blank">
-                Приложение №1 к приказу «Об усилении...» октябрь 2023 года
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №2 к приказу «Об усилении...» октябрь 2023 года.pdf') }}" rel="noopener" target="_blank">
-                Приложение №2 к приказу «Об усилении...» октябрь 2023 года
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ №194 «Об утверждении карточек постов»  от 21 апреля 2023 года.pdf') }}" rel="noopener" target="_blank">
-                Приказ №194 «Об утверждении карточек постов»  от 21 апреля 2023 года
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №1 «Карточка на пост» (Академика Волгина).pdf') }}" rel="noopener" target="_blank">
-                Приложение №1 «Карточка на пост» (Академика Волгина)
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №2 «Карточки на посты КПП№4» (Приложение №4 «Карточки на посты» (Приложение №4 «Карточка на пост» (Академика Волгина).pdf') }}" rel="noopener" target="_blank">
-                Приложение №2 «Карточки на посты КПП№4» (Приложение №4 «Карточки на посты» (Приложение №4 «Карточка на пост» (Академика Волгина)
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №3 «Карточка на пост» (Кольская).pdf') }}" rel="noopener" target="_blank">
-                Приложение №3 «Карточка на пост» (Кольская)
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №4 «Карточка на пост» (Коптево).pdf') }}" rel="noopener" target="_blank">
-                Приложение №4 «Карточка на пост» (Коптево)
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №5 «Карточка на пост» (Окружной проезд).pdf') }}" rel="noopener" target="_blank">
-                Приложение №5 «Карточка на пост» (Окружной проезд)
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №6 «Карточка на пост» (Черкизово).pdf') }}" rel="noopener" target="_blank">
-                Приложение №6 «Карточка на пост» (Черкизово)
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №7 «Карточка на пост» (Бобруйская).pdf') }}" rel="noopener" target="_blank">
-                Приложение №7 «Карточка на пост» (Бобруйская)
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №8 «Карточка на пост» (Дмитровское шоссе).pdf') }}" rel="noopener" target="_blank">
-                Приложение №8 «Карточка на пост» (Дмитровское шоссе)
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №9 «Карточка на пост» (Малый Ивановский переулок).pdf') }}" rel="noopener" target="_blank">
-                Приложение №9 «Карточка на пост» (Малый Ивановский переулок)
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №10 «Карточка на пост» (Новомосковский округ).pdf') }}" rel="noopener" target="_blank">
-                Приложение №10 «Карточка на пост» (Новомосковский округ)
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ №650 «Об обеспечении пожарной безопасности объектов Московского университета МВД России имени В.Я. Кикотя» от 24 апреля 2021 года.pdf') }}" rel="noopener" target="_blank">
-                Приказ №650 «Об обеспечении пожарной безопасности объектов Московского университета МВД России имени В.Я. Кикотя» от 24 апреля 2021 года
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №1 к приказу №650 «Инструкция ответственного за обеспечение пожарной безопасности Московского университета МВД России имени В.Я. Кикотя».pdf') }}" rel="noopener" target="_blank">
-                Приложение №1 к приказу №650 «Инструкция ответственного за обеспечение пожарной безопасности Московского университета МВД России имени В.Я. Кикотя»
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №2 к приказу №650 «Инструкция ответственного за обеспечение пожарной безопасности объектов Московского университета МВД России имени В.Я. Кикотя и прилегающих к ним территорий».pdf') }}" rel="noopener" target="_blank">
-                Приложение №2 к приказу №650 «Инструкция ответственного за обеспечение пожарной безопасности объектов Московского университета МВД России имени В.Я. Кикотя и прилегающих к ним территорий»
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №3 к приказу №650 «Инструкция ответственного за помещения Московского университета МВД России имени В.Я. Кикотя, руководителей структурных подразделений (институтов, факультетов, кафедр).».pdf') }}" rel="noopener" target="_blank">
-                Приложение №3 к приказу №650 «Инструкция ответственного за помещения Московского университета МВД России имени В.Я. Кикотя, руководителей структурных подразделений (институтов, факультетов, кафедр).»
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №4 к приказу №650 «Инструкция ответственного за обеспечение пожарной безопасности в квартирах (комнатах) общежитий Московского университета МВД России имени В.Я. Кикотя».pdf') }}" rel="noopener" target="_blank">
-                Приложение №4 к приказу №650 «Инструкция ответственного за обеспечение пожарной безопасности в квартирах (комнатах) общежитий Московского университета МВД России имени В.Я. Кикотя»
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №5 к приказу №650 «Инструкция о мерах пожарной безопасности и действиях при пожаре в помещениях, квартирах, зданиях, сооружениях, на территории МосУ МВД России имени В.Я. Кикотя».pdf') }}" rel="noopener" target="_blank">
-                Приложение №5 к приказу №650 «Инструкция о мерах пожарной безопасности и действиях при пожаре в помещениях, квартирах, зданиях, сооружениях, на территории МосУ МВД России имени В.Я. Кикотя»
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №6 к приказу №650 «Инструкция по правилам обеспечения пожарной безопасности при проведении мероприятий с массовым пребыванием людей».pdf') }}" rel="noopener" target="_blank">
-                Приложение №6 к приказу №650 «Инструкция по правилам обеспечения пожарной безопасности при проведении мероприятий с массовым пребыванием людей»
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №7 к приказу №650 «Инструкция о соблюдении мер пожарной безопасности на объектах хранения».pdf') }}" rel="noopener" target="_blank">
-                Приложение №7 к приказу №650 «Инструкция о соблюдении мер пожарной безопасности на объектах хранения»
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №8 к приказу №650 «Инструкция о мерах пожарной безопасности при проведении хозяйственных и пожароопасных работ».pdf') }}" rel="noopener" target="_blank">
-                Приложение №8 к приказу №650 «Инструкция о мерах пожарной безопасности при проведении хозяйственных и пожароопасных работ»
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №9 к приказу №650 «Инструкция о мерах пожарной безопасности при проведении работ по капитальному и текущему ремонту».pdf') }}" rel="noopener" target="_blank">
-                Приложение №9 к приказу №650 «Инструкция о мерах пожарной безопасности при проведении работ по капитальному и текущему ремонту»
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №10 к приказу №650 «Ведомость о проведении инструктажа сотрудников МосУ МВД России имени В.Я. Кикотя о мерах пожарной безопасности и действиях при пожаре».pdf') }}" rel="noopener" target="_blank">
-                Приложение №10 к приказу №650 «Ведомость о проведении инструктажа сотрудников МосУ МВД России имени В.Я. Кикотя о мерах пожарной безопасности и действиях при пожаре»
-              </a>
-            </li>
-            <li class="border-bottom mb-2 p-2">
-              <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №11 к приказу №650 «Предписание по устранению нарушений обязательных требований пожарной безопасности».pdf') }}" rel="noopener" target="_blank">
-                Приложение №11 к приказу №650 «Предписание по устранению нарушений обязательных требований пожарной безопасности»
-              </a>
-            </li>
-          </ul>
+          <div class="row row-cols-1 row-cols-md-4 mb-3 text-center">
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Федеральный закон «О полиции» от 07.02.2011 N 3-ФЗ.pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Федеральный закон №3-ФЗ «О полиции»<br> <small class="text-body-secondary fw-light">от 07.02.2011 г.</small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ №1262 «Об утверждении инструкций» от 24.10.2020 года.pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приказ №1262 <br>«Об утверждении инструкций» <br><small class="text-body-secondary fw-light">от 24.10.2020 г.</small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ №1263 «Об утверждении состава суточного наряда» от 24.10.2020 года.pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приказ №1263 <br>«Об утверждении состава суточного наряда» <br><small class="text-body-secondary fw-light">от 24.10.2020 г.</small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ №569 «Об утверждении Положения по организации внутренней службы и внутреннего порядка» от 21.04.2023 года.pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приказ №569 <br>«Об утверждении Положения по организации внутренней службы и внутреннего порядка» <br><small class="text-body-secondary fw-light">от 21.04.2023 г.</small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ «Об усилении охраны и обороны объектов и филиалов Московского университета МВД России имени В.Я. Кикотя» от 2 октября 2023 года.pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приказ <br>«Об усилении охраны и обороны объектов и филиалов Московского университета МВД России имени В.Я. Кикотя» <br><small class="text-body-secondary fw-light">от 02.10.2023 г.</small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №1 к приказу «Об усилении...» октябрь 2023 года.pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №1 <br>к приказу «Об усилении...» <br><small class="text-body-secondary fw-light">октябрь 2023 г.</small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №2 к приказу «Об усилении...» октябрь 2023 года.pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №2 <br>к приказу «Об усилении...» <br><small class="text-body-secondary fw-light">октябрь 2023 г.</small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ №194 «Об утверждении карточек постов»  от 21 апреля 2023 года.pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приказ №194 <br>«Об утверждении карточек постов» <br><small class="text-body-secondary fw-light">от 21.04.2023 г.</small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №1 «Карточка на пост» (Академика Волгина).pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №1 <br>«Карточка на пост» (Академика Волгина) <br><small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №2 «Карточка на пост КПП№4» (Академика Волгина).pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №2 <br>«Карточка на пост КПП №4» (Академика Волгина) <br><small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №3 «Карточка на пост» (Кольская).pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №3 <br>«Карточка на пост» (Кольская) <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №4 «Карточка на пост» (Коптево).pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №4 <br>«Карточка на пост» (Коптево) <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №5 «Карточка на пост» (Окружной проезд).pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №5 <br>«Карточка на пост» (Окружной проезд) <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №6 «Карточка на пост» (Черкизово).pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №6 <br>«Карточка на пост» (Черкизово) <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №7 «Карточка на пост» (Бобруйская).pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №7 <br>«Карточка на пост» (Бобруйская) <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №8 «Карточка на пост» (Дмитровское шоссе).pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №8 <br>«Карточка на пост» (Дмитровское шоссе) <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №9 «Карточка на пост» (Малый Ивановский переулок).pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №9 <br>«Карточка на пост» (Малый Ивановский переулок) <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №10 «Карточка на пост» (Новомосковский округ).pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №10 <br>«Карточка на пост» (Новомосковский округ) <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приказ №650 «Об обеспечении пожарной безопасности объектов Московского университета МВД России имени В.Я. Кикотя» от 24 апреля 2021 года.pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                      <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приказ №650 <br>«Об обеспечении пожарной безопасности объектов Московского университета МВД России имени В.Я. Кикотя» <br><small class="text-body-secondary fw-light">от 24.04.2021 г.</small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №1 к приказу №650 «Инструкция ответственного за обеспечение пожарной безопасности Московского университета МВД России имени В.Я. Кикотя».pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №1<br> к приказу №650 <br>«Инструкция ответственного за обеспечение пожарной безопасности Московского университета МВД России имени В.Я. Кикотя» <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №2 к приказу №650 «Инструкция ответственного за обеспечение пожарной безопасности объектов Московского университета МВД России имени В.Я. Кикотя и прилегающих к ним территорий».pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №2<br> к приказу №650 <br>«Инструкция ответственного за обеспечение пожарной безопасности объектов Московского университета МВД России имени В.Я. Кикотя и прилегающих к ним территорий» <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №3 к приказу №650 «Инструкция ответственного за помещения Московского университета МВД России имени В.Я. Кикотя, руководителей структурных подразделений (институтов, факультетов, кафедр).».pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №3<br> к приказу №650 <br>«Инструкция ответственного за помещения Московского университета МВД России имени В.Я. Кикотя, руководителей структурных подразделений (институтов, факультетов, кафедр).» <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №4 к приказу №650 «Инструкция ответственного за обеспечение пожарной безопасности в квартирах (комнатах) общежитий Московского университета МВД России имени В.Я. Кикотя».pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №4<br> к приказу №650 <br>«Инструкция ответственного за обеспечение пожарной безопасности в квартирах (комнатах) общежитий Московского университета МВД России имени В.Я. Кикотя» <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №5 к приказу №650 «Инструкция о мерах пожарной безопасности и действиях при пожаре в помещениях, квартирах, зданиях, сооружениях, на территории МосУ МВД России имени В.Я. Кикотя».pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №5<br> к приказу №650 <br>«Инструкция о мерах пожарной безопасности и действиях при пожаре в помещениях, квартирах, зданиях, сооружениях, на территории МосУ МВД России имени В.Я. Кикотя» <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №6 к приказу №650 «Инструкция по правилам обеспечения пожарной безопасности при проведении мероприятий с массовым пребыванием людей».pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №6<br> к приказу №650 <br>«Инструкция по правилам обеспечения пожарной безопасности при проведении мероприятий с массовым пребыванием людей» <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №7 к приказу №650 «Инструкция о соблюдении мер пожарной безопасности на объектах хранения».pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №7<br> к приказу №650 <br>«Инструкция о соблюдении мер пожарной безопасности на объектах хранения» <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №8 к приказу №650 «Инструкция о мерах пожарной безопасности при проведении хозяйственных и пожароопасных работ».pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №8<br> к приказу №650 <br>«Инструкция о мерах пожарной безопасности при проведении хозяйственных и пожароопасных работ» <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №9 к приказу №650 «Инструкция о мерах пожарной безопасности при проведении работ по капитальному и текущему ремонту».pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №9<br> к приказу №650 <br>«Инструкция о мерах пожарной безопасности при проведении работ по капитальному и текущему ремонту» <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №10 к приказу №650 «Ведомость о проведении инструктажа сотрудников МосУ МВД России имени В.Я. Кикотя о мерах пожарной безопасности и действиях при пожаре».pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №10<br> к приказу №650 <br>«Ведомость о проведении инструктажа сотрудников МосУ МВД России имени В.Я. Кикотя о мерах пожарной безопасности и действиях при пожаре» <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                <a class="icon-link mb-1 text-decoration-none" href="{{ url_for('static', filename='doc/Приложение №11 к приказу №650 «Предписание по устранению нарушений обязательных требований пожарной безопасности».pdf') }}" rel="noopener" target="_blank">
+                  <div class="card-header">
+                    <h5 class="my-0 fw-normal text-end">/DOC</h5>
+                  </div>
+                  <div class="card-body py-5">
+                    <h6 class="card-title pricing-card-title">Приложение №11<br> к приказу №650 <br>«Предписание по устранению нарушений обязательных требований пожарной безопасности» <small class="text-body-secondary fw-light"></small></h6>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
-
         </div>
     </form>
   </div>
 
-
-
   {% endblock %}
-
-</main>
-</body>
-</html>
-
 
 <!--
 Функционал вкладки:

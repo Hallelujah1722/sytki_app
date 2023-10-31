@@ -1,740 +1,437 @@
 {% extends 'base.html' %}
 # наследование от страницы base.html
 
-<body>
-  <main>
-
     {% block body %}
-    <!--НЕ РАБОТАЕТ КАЛЕНДАРЬ-->
+
+    <div class="d-flex flex-wrap container text-center align-items-center">
+      <form class="row g-3 py-4 needs-validation" novalidate>
+        <div class="row mb-2">
+          <div class="col-md-4">
+            <div class="row g-0 overflow-hidden flex-md-row mb-4 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+              <!--календарь-->
+                <div class="calendar" id="calendar-app">
+                  <div class="calendar--view" id="calendar-view">
+                    <!--ПРОШЛЫЙ ТЕКУЩИЙ И СЛЕДУЮЩИЙ МЕСЯЦ-->
+                    <div class="cview__month">
+                      <span class="cview__month-last" id="calendar-month-last"></span>
+                      <span class="cview__month-current" id="calendar-month"></span>
+                      <span class="cview__month-next" id="calendar-month-next"></span>
+                    </div>
+                    <!--ДНИ НЕДЕЛИ-->
+                    <div class="cview__header">Вс</div>
+                    <div class="cview__header">Пн</div>
+                    <div class="cview__header">Вт</div>
+                    <div class="cview__header">Ср</div>
+                    <div class="cview__header">Чт</div>
+                    <div class="cview__header">Пт</div>
+                    <div class="cview__header">Сб</div>
+                    <!--ДНИ МЕСЯЦА-->
+                    <div class="calendar--view" id="dates">
+                    </div>
+                  </div>
+                  <!--ССЫЛКА НА СЕГОДНЯШНИЙ ДЕНЬ-->
+                  <div class="footer">
+                    <span><span id="footer-date" class="footer__link">Сегодня</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
-<!--
+          <div class="col-md-8">
+            <!--Всплывающее окно куда планируется добавить таблицу с расстановкой при нажатии на день в календаре-->
+                <div class="rasstanovka" id="day-view">
+                  <div class="day-view-content">
 
-    <div class="calendar" id="calendar-app">
-      <div class="calendar--day-view" id="day-view">
-        <span class="day-view-exit" id="day-view-exit">&times;</span>
-        <span class="day-view-date" id="day-view-date">MAY 29 2016</span>
-        <div class="day-view-content">
-          Всплывающее окно (сделать расстановку на конкретный день)
-        </div>
-      </div>
-      <div class="calendar--view" id="calendar-view">-->
-        <!--ПРОШЛЫЙ ТЕКУЩИЙ И СЛЕДУЮЩИЙ МЕСЯЦ-->
-   <!--     <div class="cview__month">
-          <span class="cview__month-last" id="calendar-month-last"></span>
-          <span class="cview__month-current" id="calendar-month"></span>
-          <span class="cview__month-next" id="calendar-month-next"></span>
-        </div>
-        <div class="cview__header">Вс</div>
-        <div class="cview__header">Пн</div>
-        <div class="cview__header">Вт</div>
-        <div class="cview__header">Ср</div>
-        <div class="cview__header">Чт</div>
-        <div class="cview__header">Пт</div>
-        <div class="cview__header">Сб</div>-->
-        <!--ДНИ МЕСЯЦА-->
-     <!--   <div class="calendar--view" id="dates">
-        </div>
-      </div>
-      <div class="footer">
-        <span><span id="footer-date" class="footer__link">Сегодня</span></span>
-      </div>
-    </div>
+                    <!--Таблица с расстановкой-->
+                    <div class="py-4">
+                      <h6 class="text-center">Расстановка суточного наряда на <span class="day-view-date" id="day-view-date1">сегодня</span> ФПСОИБ</h6>
+                      <table class="table table-bordered text-start">
+                        <thead>
+                        <tr>
+                          <th scope="col">№</th>
+                          <th scope="col">Вид наряда</th>
+                          <th scope="col">Спец. звание</th>
+                          <th scope="col">ФИО</th>
+                          <th scope="col">№ ячейки</th>
+                          <th scope="col">Замена</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Помощник дежурного</td>
+                          <td>сержант полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>10</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Постовой по КПП №1</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>1</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Постовой по КПП №2</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>3</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">4</th>
+                          <td>Постовой по КПП №3</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>6</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">5</th>
+                          <td>Постовой по КПП №4</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>14</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">6</th>
+                          <td>Патрульный по объекту №1</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>13</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">7</th>
+                          <td>Патрульный по объекту №2</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>9</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">8</th>
+                          <td>Патрульный по объекту №3</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>2</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">9</th>
+                          <td>Патрульный по объекту №4</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>7</td>
+                          <td></td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
 
+                    <!--Таблица с резервом-->
+                    <div class="py-4">
+                      <h6 class="text-center">Резерв суточного наряда на <span class="day-view-date" id="day-view-date2">сегодня</span> ФПСОИБ</h6>
 
+                      <table class="table table-bordered text-start">
+                        <thead>
+                        <tr>
+                          <th scope="col">№</th>
+                          <th scope="col">Вид наряда</th>
+                          <th scope="col">Спец. звание</th>
+                          <th scope="col">ФИО</th>
+                          <th scope="col">№ ячейки</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Помощник дежурного</td>
+                          <td>сержант полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>10</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Постовой по КПП</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Патрульный по объекту</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>3</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
 
-
-
-
-
+                  </div>
+                </div>
+            </div>
+          </div>
 
     <script>
       function CalendarApp(date) {
 
-  if (!(date instanceof Date)) {
-    date = new Date();
-  }
-
-  this.days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-  this.months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-
-
-  this.aptDates = [new Date(2016, 4, 30).toString(),new Date(2016, 4, 1).toString()];
-  this.eles = {
-  };
-  this.calDaySelected = null;
-
-  this.calendar = document.getElementById("calendar-app");
-
-  this.calendarView = document.getElementById("dates");
-
-  this.calendarMonthDiv = document.getElementById("calendar-month");
-  this.calendarMonthLastDiv = document.getElementById("calendar-month-last");
-  this.calendarMonthNextDiv = document.getElementById("calendar-month-next");
-
-  this.dayInspirationalQuote = document.getElementById("inspirational-quote");
-
-  this.todayIsSpan = document.getElementById("footer-date");
-  // this.eventsCountSpan = document.getElementById("footer-events");
-  this.dayViewEle = document.getElementById("day-view");
-  this.dayViewExitEle = document.getElementById("day-view-exit");
-  this.dayViewDateEle = document.getElementById("day-view-date");
-  this.addDayEventEle = document.getElementById("add-event");
-  this.dayEventsEle = document.getElementById("day-events");
-
-  this.dayEventAddForm = {
-    cancelBtn: document.getElementById("add-event-cancel"),
-    addBtn: document.getElementById("add-event-save"),
-    nameEvent:  document.getElementById("input-add-event-name"),
-    startTime:  document.getElementById("input-add-event-start-time"),
-    endTime:  document.getElementById("input-add-event-end-time"),
-    startAMPM:  document.getElementById("input-add-event-start-ampm"),
-    endAMPM:  document.getElementById("input-add-event-end-ampm")
-  };
-
-  this.dayEventsList = document.getElementById("day-events-list");
-  this.dayEventBoxEle = document.getElementById("add-day-event-box");
-
-/* Запустите приложение */
-  this.showView(date);
-  this.addEventListeners();
-  this.todayIsSpan.textContent = "Today is " + this.months[date.getMonth()] + " " + date.getDate();
-}
-
-CalendarApp.prototype.addEventListeners = function(){
-
-  this.calendar.addEventListener("click", this.mainCalendarClickClose.bind(this));
-  this.todayIsSpan.addEventListener("click", this.showView.bind(this));
-  this.calendarMonthLastDiv.addEventListener("click", this.showNewMonth.bind(this));
-  this.calendarMonthNextDiv.addEventListener("click", this.showNewMonth.bind(this));
-  this.dayViewExitEle.addEventListener("click", this.closeDayWindow.bind(this));
-  this.dayViewDateEle.addEventListener("click", this.showNewMonth.bind(this));
-  this.addDayEventEle.addEventListener("click", this.addNewEventBox.bind(this));
-  this.dayEventAddForm.cancelBtn.addEventListener("click", this.closeNewEventBox.bind(this));
-  this.dayEventAddForm.cancelBtn.addEventListener("keyup", this.closeNewEventBox.bind(this));
-
-  this.dayEventAddForm.startTime.addEventListener("keyup",this.inputChangeLimiter.bind(this));
-  this.dayEventAddForm.startAMPM.addEventListener("keyup",this.inputChangeLimiter.bind(this));
-  this.dayEventAddForm.endTime.addEventListener("keyup",this.inputChangeLimiter.bind(this));
-  this.dayEventAddForm.endAMPM.addEventListener("keyup",this.inputChangeLimiter.bind(this));
-  this.dayEventAddForm.addBtn.addEventListener("click",this.saveAddNewEvent.bind(this));
-
-};
-CalendarApp.prototype.showView = function(date){
-  if ( !date || (!(date instanceof Date)) ) date = new Date();
-  var now = new Date(date),
-      y = now.getFullYear(),
-      m = now.getMonth();
-  var today = new Date();
-
-  var lastDayOfM = new Date(y, m + 1, 0).getDate();
-  var startingD = new Date(y, m, 1).getDay();
-  var lastM = new Date(y, now.getMonth()-1, 1);
-  var nextM = new Date(y, now.getMonth()+1, 1);
-
-  this.calendarMonthDiv.classList.remove("cview__month-activate");
-  this.calendarMonthDiv.classList.add("cview__month-reset");
-
-  while(this.calendarView.firstChild) {
-    this.calendarView.removeChild(this.calendarView.firstChild);
-  }
-
-  // build up spacers
-  for ( var x = 0; x < startingD; x++ ) {
-    var spacer = document.createElement("div");
-    spacer.className = "cview--spacer";
-    this.calendarView.appendChild(spacer);
-  }
-
-  for ( var z = 1; z <= lastDayOfM; z++ ) {
-
-    var _date = new Date(y, m ,z);
-    var day = document.createElement("div");
-    day.className = "cview--date";
-    day.textContent = z;
-    day.setAttribute("data-date", _date);
-    day.onclick = this.showDay.bind(this);
-
-// проверьте, соответствует ли сегодняшняя дата
-    if ( z == today.getDate() && y == today.getFullYear() && m == today.getMonth() ) {
-      day.classList.add("today");
-    }
-
-// проверьте, есть ли события для отображения
-    if ( this.aptDates.indexOf(_date.toString()) !== -1 ) {
-      day.classList.add("has-events");
-    }
-
-    this.calendarView.appendChild(day);
-  }
-
-  var _that = this;
-  setTimeout(function(){
-    _that.calendarMonthDiv.classList.add("cview__month-activate");
-  }, 50);
-
-  this.calendarMonthDiv.textContent = this.months[now.getMonth()] + " " + now.getFullYear();
-  this.calendarMonthDiv.setAttribute("data-date", now);
-
-
-  this.calendarMonthLastDiv.textContent = "← " + this.months[lastM.getMonth()];
-  this.calendarMonthLastDiv.setAttribute("data-date", lastM);
-
-  this.calendarMonthNextDiv.textContent = this.months[nextM.getMonth()] + " →";
-  this.calendarMonthNextDiv.setAttribute("data-date", nextM);
-
-}
-
-CalendarApp.prototype.showDay = function(e, dayEle) {
-  e.stopPropagation();
-  if ( !dayEle ) {
-    dayEle = e.currentTarget;
-  }
-  var dayDate = new Date(dayEle.getAttribute('data-date'));
-
-  this.calDaySelected = dayEle;
-
-  this.openDayWindow(dayDate);
-};
-
-CalendarApp.prototype.openDayWindow = function(date){
-
-  var now = new Date();
-  var day = new Date(date);
-  this.dayViewDateEle.textContent = this.days[day.getDay()] + ", " + this.months[day.getMonth()] + " " + day.getDate() + ", " + day.getFullYear();
-  this.dayViewDateEle.setAttribute('data-date', day);
-  this.dayViewEle.classList.add("calendar--day-view-active");
-
-/* Контекстуальный язык меняется в зависимости от времени. Также показывайте btn для планирования будущих событий */
-  var _dayTopbarText = '';
-  if ( day < new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
-    _dayTopbarText = "had ";
-    this.addDayEventEle.style.display = "none";
-  } else {
-     _dayTopbarText = "have ";
-     this.addDayEventEle.style.display = "inline";
-  }
-  this.addDayEventEle.setAttribute("data-date", day);
-
-  var eventsToday = this.showEventsByDay(day);
-  if ( !eventsToday ) {
-    _dayTopbarText += "no ";
-    var _rand = Math.round(Math.random() * ((this.quotes.length - 1 ) - 0) + 0);
-    this.dayInspirationalQuote.textContent = this.quotes[_rand];
-  } else {
-    _dayTopbarText += eventsToday.length + " ";
-    this.dayInspirationalQuote.textContent = null;
-  }
-  //this.dayEventsList.innerHTML = this.showEventsCreateHTMLView(eventsToday);
-  while(this.dayEventsList.firstChild) {
-    this.dayEventsList.removeChild(this.dayEventsList.firstChild);
-  }
-
-  this.dayEventsList.appendChild(this.showEventsCreateElesView(eventsToday));
-
-
-  this.dayEventsEle.textContent = _dayTopbarText + "events on " + this.months[day.getMonth()] + " " + day.getDate() + ", " + day.getFullYear();
-
-
-};
-
-CalendarApp.prototype.showEventsCreateElesView = function(events) {
-  var ul = document.createElement("ul");
-  ul.className = 'day-event-list-ul';
-  events = this.sortEventsByTime(events);
-  var _this = this;
-  events.forEach(function(event){
-    var _start = new Date(event.startTime);
-    var _end = new Date(event.endTime);
-    var idx = event.index;
-    var li = document.createElement("li");
-    li.className = "event-dates";
-    // li.innerHtml
-    var html = "<span class='start-time'>" + _start.toLocaleTimeString(navigator.language,{hour: '2-digit', minute:'2-digit'}) + "</span> <small>through</small> ";
-    html += "<span class='end-time'>" + _end.toLocaleTimeString(navigator.language,{hour: '2-digit', minute:'2-digit'}) + ( (_end.getDate() != _start.getDate()) ? ' <small>on ' + _end.toLocaleDateString() + "</small>" : '') +"</span>";
-
-
-    html += "<span class='event-name'>" + event.name + "</span>";
-
-    var div = document.createElement("div");
-    div.className = "event-dates";
-    div.innerHTML = html;
-
-    var deleteBtn = document.createElement("span");
-    var deleteText = document.createTextNode("delete");
-    deleteBtn.className = "event-delete";
-    deleteBtn.setAttribute("data-idx", idx);
-    deleteBtn.appendChild(deleteText);
-    deleteBtn.onclick = _this.deleteEvent.bind(_this);
-
-    div.appendChild(deleteBtn);
-
-    li.appendChild(div);
-    ul.appendChild(li);
-  });
-  return ul;
-};
-CalendarApp.prototype.deleteEvent = function(e) {
-  var deleted = this.apts.splice(e.currentTarget.getAttribute("data-idx"),1);
-  var deletedDate = new Date(deleted[0].day);
-  var anyDatesLeft = this.showEventsByDay(deletedDate);
-  if ( anyDatesLeft === false ) {
-    // безопасно удалять из массива
-    var idx = this.aptDates.indexOf(deletedDate.toString());
-    if (idx >= 0) {
-       this.aptDates.splice(idx,1);
-    // удалить точку из представления календаря
-      var ele = document.querySelector('.cview--date[data-date="'+ deletedDate.toString() +'"]');
-      if ( ele ) {
-        ele.classList.remove("has-events");
+      if (!(date instanceof Date)) {
+        date = new Date();
       }
-    }
-  }
-  this.openDayWindow(deletedDate);;
-};
-CalendarApp.prototype.sortEventsByTime = function(events) {
-  if (!events) return [];
-  return events.sort(function compare(a, b) {
-    if (new Date(a.startTime) < new Date(b.startTime)) {
-      return -1;
-    }
-    if (new Date(a.startTime) > new Date(b.startTime)) {
-      return 1;
-    }
-    // a must be equal to b
-    return 0;
-  });
-};
-CalendarApp.prototype.showEventsByDay = function(day) {
-  var _events = [];
-  this.apts.forEach(function(apt, idx){
-    if ( day.toString() == apt.day.toString() ) {
-      apt.index = idx;
-      _events.push(apt);
-    }
-  });
-  return (_events.length) ? _events : false;
-};
-CalendarApp.prototype.closeDayWindow = function(){
-  this.dayViewEle.classList.remove("calendar--day-view-active");
-  this.closeNewEventBox();
-};
-CalendarApp.prototype.mainCalendarClickClose = function(e){
-  if ( e.currentTarget != e.target ) {
-    return;
-  }
 
-  this.dayViewEle.classList.remove("calendar--day-view-active");
-  this.closeNewEventBox();
-};
-CalendarApp.prototype.addNewEventBox = function(e){
-  var target = e.currentTarget;
-  this.dayEventBoxEle.setAttribute("data-active", "true");
-  this.dayEventBoxEle.setAttribute("data-date", target.getAttribute("data-date"));
+      this.days = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+      this.months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+      this.months.rasstanovka = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+      this.months.list = ['январе', 'феврале', 'марте', 'апреле', 'мае', 'июне', 'июле', 'августе', 'сентябре', 'октябре', 'ноябре', 'декабре'];
 
-};
-CalendarApp.prototype.closeNewEventBox = function(e){
+      this.aptDates = [new Date(2023, 1, 30).toString(),new Date(2023, 1, 1).toString()];
+      this.eles = {
+      };
+      this.calDaySelected = null;
 
-  if (e && e.keyCode && e.keyCode != 13) return false;
+      this.calendar = document.getElementById("calendar-app");
 
-  this.dayEventBoxEle.setAttribute("data-active", "false");
-  // reset values
-  this.resetAddEventBox();
+      this.calendarView = document.getElementById("dates");
 
-};
-CalendarApp.prototype.saveAddNewEvent = function() {
-  var saveErrors = this.validateAddEventInput();
-  if ( !saveErrors ) {
-    this.addEvent();
-  }
-};
+      this.calendarMonthDiv = document.getElementById("calendar-month");
+      this.calendarMonthLastDiv = document.getElementById("calendar-month-last");
+      this.calendarMonthNextDiv = document.getElementById("calendar-month-next");
 
-CalendarApp.prototype.addEvent = function() {
+      this.dayInspirationalQuote = document.getElementById("inspirational-quote");
 
-  var name = this.dayEventAddForm.nameEvent.value.trim();
-  var dayOfDate = this.dayEventBoxEle.getAttribute("data-date");
-  var dateObjectDay =  new Date(dayOfDate);
-  var cleanDates = this.cleanEventTimeStampDates();
+      this.todayIsSpan = document.getElementById("footer-date");
+      this.dayViewEle = document.getElementById("day-view");
 
-  this.apts.push({
-    name: name,
-    day: dateObjectDay,
-    startTime: cleanDates[0],
-    endTime: cleanDates[1]
-  });
-  this.closeNewEventBox();
-  this.openDayWindow(dayOfDate);
-  this.calDaySelected.classList.add("has-events");
-  // add to dates
-  if ( this.aptDates.indexOf(dateObjectDay.toString()) === -1 ) {
-    this.aptDates.push(dateObjectDay.toString());
-  }
+      this.dayViewDateEle1 = document.getElementById("day-view-date1");
+      this.dayViewDateEle2 = document.getElementById("day-view-date2");
+      this.dayViewDateEle3 = document.getElementById("day-view-date3");
 
-};
-
-CalendarApp.prototype.cleanEventTimeStampDates = function() {
-
-  var startTime = this.dayEventAddForm.startTime.value.trim() || this.dayEventAddForm.startTime.getAttribute("placeholder") || '8';
-  var startAMPM = this.dayEventAddForm.startAMPM.value.trim() || this.dayEventAddForm.startAMPM.getAttribute("placeholder") || 'am';
-  startAMPM = (startAMPM == 'a') ? startAMPM + 'm' : startAMPM;
-  var endTime = this.dayEventAddForm.endTime.value.trim() || this.dayEventAddForm.endTime.getAttribute("placeholder") || '9';
-  var endAMPM = this.dayEventAddForm.endAMPM.value.trim() || this.dayEventAddForm.endAMPM.getAttribute("placeholder") || 'pm';
-  endAMPM = (endAMPM == 'p') ? endAMPM + 'm' : endAMPM;
-  var date = this.dayEventBoxEle.getAttribute("data-date");
-
-  var startingTimeStamps = this.convertTo23HourTime(startTime, startAMPM);
-  var endingTimeStamps = this.convertTo23HourTime(endTime, endAMPM);
-
-  var dateOfEvent = new Date(date);
-  var startDate = new Date(dateOfEvent.getFullYear(), dateOfEvent.getMonth(), dateOfEvent.getDate(), startingTimeStamps[0], startingTimeStamps[1]);
-  var endDate = new Date(dateOfEvent.getFullYear(), dateOfEvent.getMonth(), dateOfEvent.getDate(), endingTimeStamps[0], endingTimeStamps[1]);
-
-  // if end date is less than start date - set end date back another day
-  if ( startDate > endDate ) endDate.setDate(endDate.getDate() + 1);
-
-  return [startDate, endDate];
-
-};
-CalendarApp.prototype.validateAddEventInput = function() {
-
-  var _errors = false;
-  var name = this.dayEventAddForm.nameEvent.value.trim();
-  var startTime = this.dayEventAddForm.startTime.value.trim();
-  var startAMPM = this.dayEventAddForm.startAMPM.value.trim();
-  var endTime = this.dayEventAddForm.endTime.value.trim();
-  var endAMPM = this.dayEventAddForm.endAMPM.value.trim();
-
-  if (!name || name == null) {
-    _errors = true;
-    this.dayEventAddForm.nameEvent.classList.add("add-event-edit--error");
-    this.dayEventAddForm.nameEvent.focus();
-  } else {
-     this.dayEventAddForm.nameEvent.classList.remove("add-event-edit--error");
-  }
-
-  return _errors;
-
-
-};
-var timeOut = null;
-var activeEle = null;
-CalendarApp.prototype.inputChangeLimiter = function(ele) {
-
-  if ( ele.currentTarget ) {
-    ele = ele.currentTarget;
-  }
-  if (timeOut && ele == activeEle){
-    clearTimeout(timeOut);
-  }
-
-  var limiter = CalendarApp.prototype.textOptionLimiter;
-
-  var _options = ele.getAttribute("data-options").split(",");
-  var _format = ele.getAttribute("data-format") || 'text';
-  timeOut = setTimeout(function(){
-    ele.value = limiter(_options, ele.value, _format);
-  }, 600);
-  activeEle = ele;
-
-};
-CalendarApp.prototype.textOptionLimiter = function(options, input, format){
-  if ( !input ) return '';
-
-  if ( input.indexOf(":") !== -1 && format == 'datetime' ) {
-
-    var _splitTime = input.split(':', 2);
-    if (_splitTime.length == 2 && !_splitTime[1].trim()) return input;
-    var _trailingTime = parseInt(_splitTime[1]);
-    /* Probably could be coded better -- a block to clean up trailing data */
-    if (options.indexOf(_splitTime[0]) === -1) {
-      return options[0];
-    }
-    else if (_splitTime[1] == "0" ) {
-      return input;
-    }
-    else if (_splitTime[1] == "00" ) {
-      return _splitTime[0] +  ":00";
-    }
-    else if (_trailingTime < 10 ) {
-      return _splitTime[0] + ":" + "0" + _trailingTime;
-    }
-    else if ( !Number.isInteger(_trailingTime) || _trailingTime < 0 || _trailingTime > 59 )  {
-      return _splitTime[0];
-    }
-    return _splitTime[0] + ":" + _trailingTime;
-  }
-  if ((input.toString().length >= 3) ) {
-    var pad = (input.toString().length - 4) * -1;
-    var _hour, _min;
-    if (pad == 1) {
-      _hour = input[0];
-      _min = input[1] + input[2];
-    } else {
-      _hour = input[0] + input[1];
-      _min = input[2] + input[3];
+    /* Запустите приложение */
+      this.showView(date);
+      this.addEventListeners();
     }
 
-    _hour = Math.max(1,Math.min(12,(_hour)));
-    _min = Math.min(59,(_min));
-    if ( _min < 10 ) {
-      _min = "0" + _min;
-    }
-    _min = (isNaN(_min)) ? '00' : _min;
-    _hour = (isNaN(_hour)) ? '9' : _hour ;
 
-    return _hour + ":" + _min;
+      CalendarApp.prototype.addEventListeners = function(){
+        this.calendar.addEventListener("click", this.mainCalendarClickClose.bind(this));
+        this.todayIsSpan.addEventListener("click", this.showView.bind(this));
+        this.calendarMonthLastDiv.addEventListener("click", this.showNewMonth.bind(this));
+        this.calendarMonthNextDiv.addEventListener("click", this.showNewMonth.bind(this));
+        this.dayViewExitEle.addEventListener("click", this.closeDayWindow.bind(this));
+        this.dayViewDateEle1.addEventListener("click", this.showNewMonth.bind(this));
+        this.dayViewDateEle2.addEventListener("click", this.showNewMonth.bind(this));
+        this.dayViewDateEle3.addEventListener("click", this.showNewMonth.bind(this));
+      };
 
-  }
 
-  if (options.indexOf(input) === -1) {
-    return options[0];
-  }
+      CalendarApp.prototype.showView = function(date){
+        if ( !date || (!(date instanceof Date)) ) date = new Date();
+        var now = new Date(date),
+            y = now.getFullYear(),
+            m = now.getMonth();
+        var today = new Date();
 
-  return input;
-};
-CalendarApp.prototype.resetAddEventBox = function(){
-  this.dayEventAddForm.nameEvent.value = '';
-  this.dayEventAddForm.nameEvent.classList.remove("add-event-edit--error");
-  this.dayEventAddForm.endTime.value = '';
-  this.dayEventAddForm.startTime.value = '';
-  this.dayEventAddForm.endAMPM.value = '';
-  this.dayEventAddForm.startAMPM.value = '';
-};
-CalendarApp.prototype.showNewMonth = function(e){
-  var date = e.currentTarget.dataset.date;
-  var newMonthDate = new Date(date);
-  this.showView(newMonthDate);
-  this.closeDayWindow();
-  return true;
-};
+        var lastDayOfM = new Date(y, m + 1, 0).getDate();
+        var startingD = new Date(y, m, 1).getDay();
+        var lastM = new Date(y, now.getMonth()-1, 1);
+        var nextM = new Date(y, now.getMonth()+1, 1);
 
-var calendar = new CalendarApp();
-console.log(calendar);
+        while(this.calendarView.firstChild) {
+          this.calendarView.removeChild(this.calendarView.firstChild);
+        }
+
+        for ( var z = 1; z <= lastDayOfM; z++ ) {
+
+          var _date = new Date(y, m, z);
+          var day = document.createElement("div");
+          day.className = "cview--date";
+          day.textContent = z;
+          day.setAttribute("data-date", _date);
+          day.onclick = this.showDay.bind(this);
+
+      // проверьте, соответствует ли сегодняшняя дата
+          if ( z == today.getDate() && y == today.getFullYear() && m == today.getMonth() ) {
+            day.classList.add("today");
+          }
+          this.calendarView.appendChild(day);
+        }
+
+        var _that = this;
+
+        this.calendarMonthDiv.textContent = this.months[now.getMonth()] + " " + now.getFullYear();
+        this.calendarMonthDiv.setAttribute("data-date", now);
+
+
+        this.calendarMonthLastDiv.textContent = "← " + this.months[lastM.getMonth()];
+        this.calendarMonthLastDiv.setAttribute("data-date", lastM);
+
+        this.calendarMonthNextDiv.textContent = this.months[nextM.getMonth()] + " →";
+        this.calendarMonthNextDiv.setAttribute("data-date", nextM);
+      }
+
+
+
+      CalendarApp.prototype.showDay = function(e, dayEle) {
+        e.stopPropagation();
+        if ( !dayEle ) {
+          dayEle = e.currentTarget;
+        }
+        var dayDate = new Date(dayEle.getAttribute('data-date'));
+
+        this.calDaySelected = dayEle;
+
+        this.openDayWindow(dayDate);
+      };
+
+
+
+      CalendarApp.prototype.openDayWindow = function(date){
+
+        var now = new Date();
+        var day = new Date(date);
+        this.dayViewDateEle1.textContent = "«" + day.getDate() + "» " + this.months.rasstanovka[day.getMonth()] + " " + day.getFullYear() + " г. (" + this.days[day.getDay()] + ")";
+        this.dayViewDateEle2.textContent = "«" + day.getDate() + "» " + this.months.rasstanovka[day.getMonth()] + " " + day.getFullYear() + " г. (" + this.days[day.getDay()] + ")";
+        this.dayViewDateEle3.textContent = this.months.list[day.getMonth()] + " " + day.getFullYear() + " г.";
+        this.dayViewDateEle1.setAttribute('data-date', day);
+        this.dayViewDateEle2.setAttribute('data-date', day);
+        this.dayViewDateEle3.setAttribute('data-date', day);
+        this.dayViewEle.classList.add("calendar--day-view-active");
+      };
+
+
+
+      CalendarApp.prototype.sortEventsByTime = function(events) {
+        if (!events) return [];
+        return events.sort(function compare(a, b) {
+          if (new Date(a.startTime) < new Date(b.startTime)) {
+            return -1;
+          }
+          if (new Date(a.startTime) > new Date(b.startTime)) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      };
+
+
+
+      CalendarApp.prototype.mainCalendarClickClose = function(e){
+        if ( e.currentTarget != e.target ) {
+          return;
+        }
+
+        this.dayViewEle.classList.remove("calendar--day-view-active");
+        this.closeNewEventBox();
+      };
+
+
+
+      CalendarApp.prototype.showNewMonth = function(e){
+        var date = e.currentTarget.dataset.date;
+        var newMonthDate = new Date(date);
+        this.showView(newMonthDate);
+        this.closeDayWindow();
+        return true;
+      };
+
+
+
+    var calendar = new CalendarApp();
+    console.log(calendar);
     </script>
 
 
--->
-
-
-
-
-
-
-
-
-
-
-
-    <div class="d-flex flex-wrap container text-center align-items-center">
-      <form class="row g-3 py-4 needs-validation" novalidate>
-
-        <div class="container text-end">
-        <div class="row align-items-end justify-content-end">
-          <div class="col-md-7 py-4 form-check-inline">
-            <h6 class="text-center">Расстановка на службу с «10» сентября 2023 г. по «11» сентября 2023 г. ФПСОИБ</h6>
-            <table class="table table-bordered text-start">
-              <thead>
-              <tr>
-                <th scope="col">№</th>
-                <th scope="col">Вид наряда</th>
-                <th scope="col">Спец. звание</th>
-                <th scope="col">ФИО</th>
-                <th scope="col">№ ячейки</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Помощник дежурного</td>
-                <td>сержант полиции</td>
-                <td>Иванов И.И.</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Постовой по КПП №1</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Постовой по КПП №2</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Постовой по КПП №3</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>6</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Постовой по КПП №4</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>14</td>
-              </tr>
-              <tr>
-                <th scope="row">6</th>
-                <td>Патрульный по объекту №1</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>13</td>
-              </tr>
-              <tr>
-                <th scope="row">7</th>
-                <td>Патрульный по объекту №2</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>9</td>
-              </tr>
-              <tr>
-                <th scope="row">8</th>
-                <td>Патрульный по объекту №3</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <th scope="row">9</th>
-                <td>Патрульный по объекту №4</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>7</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-        <hr class="featurette-divider">
-        <div class="container text-center">
-            <div class="row align-items-center justify-content-center">
-              <div class="col-md-7 py-4 form-check-inline">
-                <h6 class="text-center">Резерв на службу с «10» сентября 2023 г. по «11» сентября 2023 г. ФПСОИБ</h6>
-                <table class="table table-bordered text-start">
-                  <thead>
-                  <tr>
-                    <th scope="col">№</th>
-                    <th scope="col">Вид наряда</th>
-                    <th scope="col">Спец. звание</th>
-                    <th scope="col">ФИО</th>
-                    <th scope="col">№ ячейки</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Помощник дежурного</td>
-                    <td>сержант полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Постовой по КПП</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>1</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Патрульный по объекту</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>3</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
 
       {% if post == "admin"%}
-          <hr class="featurette-divider">
-          <div class="container text-center">
+        <div class="container text-center">
             <div class="row align-items-center justify-content-center">
-              <div class="col-md-12 py-4 form-check-inline">
-                <h6 class="text-center">Список замен на службу в сентябре 2023 г. ФПСОИБ</h6>
-                <table class="table table-bordered text-start">
-                  <thead>
-                  <tr>
-                    <th scope="col">№</th>
-                    <th scope="col">Кого заменили</th>
-                    <th scope="col">На кого заменили</th>
-                    <th scope="col">Пост замены</th>
-                    <th scope="col">Дата 1</th>
-                    <th scope="col">Дата 2</th>
-                    <th scope="col">Основание замены</th>
-                    <th scope="col">Подтверждение</th>
-                    <th scope="col">Рапорт</th>
-                    <th scope="col">Статус замены</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Помощник дежурного</td>
-                    <td>сержант полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>10</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Помощник дежурного</td>
-                    <td>сержант полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>10</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Помощник дежурного</td>
-                    <td>сержант полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>10</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Помощник дежурного</td>
-                    <td>сержант полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>10</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
+                <div class="py-4 col-md-12">
+                    <h6 class="text-center">Список замен суточного наряда в <span class="day-view-date" id="day-view-date3">текущем месяце</span> ФПСОИБ</h6>
+                    <table class="table table-bordered text-start">
+                          <thead>
+                          <tr>
+                            <th scope="col">№</th>
+                            <th scope="col">Кого заменили</th>
+                            <th scope="col">На кого заменили</th>
+                            <th scope="col">Пост замены</th>
+                            <th scope="col">Дата 1</th>
+                            <th scope="col">Дата 2</th>
+                            <th scope="col">Основание замены</th>
+                            <th scope="col">Подтверждение</th>
+                            <th scope="col">Рапорт</th>
+                            <th scope="col">Статус замены</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Помощник дежурного</td>
+                            <td>сержант полиции</td>
+                            <td>Иванов И.И.</td>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Помощник дежурного</td>
+                            <td>сержант полиции</td>
+                            <td>Иванов И.И.</td>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>Помощник дежурного</td>
+                            <td>сержант полиции</td>
+                            <td>Иванов И.И.</td>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">4</th>
+                            <td>Помощник дежурного</td>
+                            <td>сержант полиции</td>
+                            <td>Иванов И.И.</td>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          </tbody>
+                        </table>
+                </div>
             </div>
           </div>
 
+
       {%elif post == "officer" %}
-          <hr class="featurette-divider">
-          <div class="container text-center">
+        <div class="container text-center">
             <div class="row align-items-center justify-content-center">
-              <h5 class="text-center">Модуль для осуществления замены</h5>
+              <h5 class="text-center">Модуль осуществления замены</h5>
               <div class="col-md-3 py-2 text-center">
                 <label for="validationCustom01" class="form-label">Кого заменить?</label>
                 <input type="text" class="form-control" id="validationCustom01" value="" required>
@@ -786,74 +483,88 @@ console.log(calendar);
             </div>
           </div>
 
+
       {%else%}
-        <hr class="featurette-divider">
-        <div class="container text-start">
-        <div class="row align-items-start justify-content-start">
-          <div class="card mb-4 col-md-4 py-4 rounded-3 shadow-sm">
-            <div class="col-md-12">
-              <img src="{{ url_for('static', filename='img/foto.jpg') }}" width="250" class="img-thumbnail img-fluid float-start" alt="...">
-            </div>
-            <div class="row align-items-start justify-content-start">
-              <div class="col-md-6">
-                <input type="text" class="form-control" id="validationCustom03" value="сержант полиции" required>
+        <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="card mb-4 py-4 rounded-3 shadow-sm">
+            <div class="row text-center">
+              <div class="col-md-3 align-items-center justify-content-center">
+                <img src="{{ url_for('static', filename='img/foto.jpg') }}" width="250" class="img-fluid float-start" alt="...">
               </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" id="validationCustom03" value="Иванов И.И." required>
+              <div class="col-md-9 py-4">
+                <div class="row col-md-12 py-4">
+                    <div class="col-md-3">
+                      <div class="col-md-12 text-start">
+                        <div class="col-md-12">
+                          <label class="form-label">Иванов Иван Иванович</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">сержант полиции</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">903 взвод</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">4 курс</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">ФПСОИБ</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="col-md-12 text-start">
+                        <div class="col-md-12">
+                          <label class="form-label">Следующие сутки</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">30.11.2023</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">Суток за месяц:</label>
+                          <label class="form-label">2</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">Всего суток:</label>
+                          <label class="form-label">20</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="col-md-12 text-start">
+                        <div class="col-md-12">
+                          <label class="form-label">КПП</label>
+                          <label class="form-label">8</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">Патруль</label>
+                          <label class="form-label">8</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">ПД</label>
+                          <label class="form-label">10</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="col-md-12 text-start">
+                        <div class="col-md-12">
+                          <label class="form-label">Будни</label>
+                          <label class="form-label">8</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">Выходные</label>
+                          <label class="form-label">8</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">Праздники</label>
+                          <label class="form-label">10</label>
+                        </div>
+                      </div>
+                    </div>
+                </div>
               </div>
-            </div>
-            <div class="row align-items-start justify-content-start">
-              <div class="col-md-4">
-                <input type="text" class="form-control" id="validationCustom03" value="903 взвод" required>
-              </div>
-              <div class="col-md-4">
-                <input type="text" class="form-control" id="validationCustom03" value="4 курс" required>
-              </div>
-              <div class="col-md-4">
-                <input type="text" class="form-control" id="validationCustom03" value="ФПСОИБ" required>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-4 col-md-2 py-4 rounded-3 shadow-sm">
-            <div class="col-md-12">
-              <label class="form-label">Следующие сутки</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">Суток за месяц</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">Всего суток</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-          </div>
-          <div class="card mb-4 col-md-2 py-4 rounded-3 shadow-sm">
-            <div class="col-md-12">
-              <label class="form-label">КПП</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">Патруль</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">ПД</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-          </div>
-          <div class="card mb-4 col-md-2 py-4 rounded-3 shadow-sm">
-            <div class="col-md-12">
-              <label class="form-label">Будни</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">Выходные</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">Праздники</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
             </div>
           </div>
         </div>
@@ -864,13 +575,6 @@ console.log(calendar);
     </div>
 
     {% endblock %}
-
-</main>
-</body>
-</html>
-
-
-
 
 <!--
   Функционал вкладки:

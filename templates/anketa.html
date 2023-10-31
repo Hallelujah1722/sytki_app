@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 # наследование от страницы base.html
 
-<body>
-<main>
-
   {% block body %}
   <div class="d-flex flex-wrap container py-4 text-center align-items-center">
     <form action="/anketa" method="POST" autocomplete="off" class="row g-3 py-4 needs-validation" novalidate>
@@ -170,7 +167,7 @@
     </form>
   </div>
 
-
+{% endblock %}
 
 <!--
   Функцинал вкладки:
@@ -184,8 +181,3 @@
   3) курсант
   -
 -->
-
-{% endblock %}
-</main>
-</body>
-</html>

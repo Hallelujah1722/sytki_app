@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_login import LoginManager,login_user, UserMixin, logout_user, login_required, current_user
+from flask_login import LoginManager, login_user, UserMixin, logout_user, login_required, current_user
+from jinja2 import Template
 
 from db_connect import *
 # из библиотеки импортируем класc
@@ -28,7 +29,7 @@ def user_loader(email):
     return user
 
 
-@app.route('/logout') #функция выхода и аккаунта, если юзер нажимает кнопку, пользователя направялет на страницу разлога и затем на страницу логина
+@app.route('/logout') #функция выхода из аккаунта, если юзер нажимает кнопку, пользователя направялет на страницу разлога и затем на страницу логина
 @login_required
 def logout():
     logout_user()
@@ -58,9 +59,10 @@ def index():
 @app.route("/lk")
 @login_required
 def lk():
+    show_data = request.args.get('show_data') == "true"
     cur_user = current_user.id
     post = Post_user(cur_user)
-    return render_template("lk.html", title="Личный кабинет",post=post)
+    return render_template("lk.html", title="Личный кабинет", post=post,  data=show_data)
 
 
 @app.route("/statistic")
@@ -143,5 +145,3 @@ if __name__ == '__main__':
 # если текущее приложение/файл является основным и мы будем запускать только текущий файл/приложение,
 # то вызываем метод run c возможностью автоматического перезапуска сервера для наблюдения изменений в реальном режиме времени.
     app.run(debug=True)
-
-
