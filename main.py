@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
-from flask_login import LoginManager,login_user, UserMixin, logout_user, login_required, current_user
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_login import LoginManager, login_user, UserMixin, logout_user, login_required, current_user
+from jinja2 import Template
 
 from db_connect import *
 # из библиотеки импортируем класc
@@ -18,6 +19,7 @@ login_manager = LoginManager(app)
 class User(UserMixin):
     pass
 
+
 @login_manager.user_loader  #проверяет авторизацию юзера при каждом запросе к серверу
 def user_loader(email):
     if email == Session_log(email):
@@ -27,7 +29,7 @@ def user_loader(email):
     return user
 
 
-@app.route('/logout') #функция выхода и аккаунта, если юзер нажимает кнопку, пользователя направялет на страницу разлога и затем на страницу логина
+@app.route('/logout') #функция выхода из аккаунта, если юзер нажимает кнопку, пользователя направялет на страницу разлога и затем на страницу логина
 @login_required
 def logout():
     logout_user()
@@ -57,27 +59,35 @@ def index():
 @app.route("/lk")
 @login_required
 def lk():
-    return render_template("lk.html", title="Личный кабинет")
+    show_data = request.args.get('show_data') == "true"
+    cur_user = current_user.id
+    post = Post_user(cur_user)
+    return render_template("lk.html", title="Личный кабинет", post=post,  data=show_data)
 
 
 @app.route("/statistic")
 @login_required
 def statistic():
-    return render_template("statistic.html", title="Статистика")
-
+    cur_user = current_user.id
+    post = Post_user(cur_user)
+    return render_template("statistic.html", title="Статистика",post=post)
 
 @app.route("/video")
 @login_required
 def video():
-    return render_template("video.html", title="Видео")
+    cur_user = current_user.id
+    post = Post_user(cur_user)
+    return render_template("video.html", title="Видео",post=post)
 
 
 @app.route("/anketa", methods = ['POST','GET'])
 @login_required
 def anketa(): #данные с формы анкеты загружаются сюда и отправляются в бд
+    cur_user = current_user.id
+    post = Post_user(cur_user)
     if request.method == 'POST':
         cursor = connection.cursor()
-        cursor.execute("INSERT INTO kyrsants (surname, name, middlename, birthday, phone_number, telegram, faculty,"
+        cursor.execute("INSERT INTO kyrsants (surname, name, middlename, birthday, phone_number, login_email, faculty,"
                        "course, platoon, male, photo, title, post, commander, card_number, sytki_pd, "
                        "sytki_kpp, sytki_patrol, days_of_sluzhba, days_of_sytki, sytki_on_weekends, sytki_on_holidays) "
                        "VALUES (" + "'" + request.form['surname'] + "'," +
@@ -104,37 +114,34 @@ def anketa(): #данные с формы анкеты загружаются с
                                     "'" + request.form['sytki_on_holidays'] + "'" +
                                 ");")
         cursor.close()
-    return render_template("anketa.html", title="Анкета")
+    return render_template("anketa.html", title="Анкета", post=post)
 
 
 @app.route("/create")
 @login_required
 def create():
-    return render_template("create.html", title="Расстановка")
+    cur_user = current_user.id
+    post = Post_user(cur_user)
+    return render_template("create.html", title="Расстановка", post=post)
 
 
 @app.route("/iskl")
 @login_required
 def iskl():
-    return render_template("iskl.html", title="Исключения")
+    cur_user = current_user.id
+    post = Post_user(cur_user)
+    return render_template("iskl.html", title="Исключения", post=post)
 
 
 @app.route("/documents")
 @login_required
 def documents():
-    return render_template("documents.html", title="Документы")
-
-
+    cur_user = current_user.id
+    post = Post_user(cur_user)
+    return render_template("documents.html", title="Документы", post=post)
 
 
 if __name__ == '__main__':
 # если текущее приложение/файл является основным и мы будем запускать только текущий файл/приложение,
 # то вызываем метод run c возможностью автоматического перезапуска сервера для наблюдения изменений в реальном режиме времени.
     app.run(debug=True)
-
-
-'''
-@app.route('/user/<string:name>/<int:id>/<float:weight>')
-def user(name, id, weight):
-    return "Личный кабинет " + name + "-" + str(id) + "-" + str(weight)
-'''

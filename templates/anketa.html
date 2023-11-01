@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
 # наследование от страницы base.html
 
-<body>
-<main>
-
-        {% block body %}
+  {% block body %}
   <div class="d-flex flex-wrap container py-4 text-center align-items-center">
     <form action="/anketa" method="POST" autocomplete="off" class="row g-3 py-4 needs-validation" novalidate>
       <div class="col-md-4 py-2">
@@ -170,17 +167,17 @@
     </form>
   </div>
 
+{% endblock %}
+
+<!--
   Функцинал вкладки:
   1) админ
   -
+
   2) курсовой офицер
-  - создание анкеты курсанта с данными о сутках
-  - редактирование уже существующей анкеты курсанта (из статистики ссылка на заполненную анкету)
++ создание анкеты курсанта с данными о сутках
++ редактирование уже существующей анкеты курсанта (из статистики ссылка на заполненную анкету)
+
   3) курсант
   -
-      {% endblock %}
-
-
-</main>
-</body>
-</html>
+-->

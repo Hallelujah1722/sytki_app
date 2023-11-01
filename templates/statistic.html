@@ -1,27 +1,90 @@
 {% extends 'base.html' %}
 # наследование от страницы base.html
 
-<body>
-<main>
   {% block body %}
+  <!--ДОБАВИТЬ СВЯЗИ К ТАБЛИЦЕ ИЗ БД-->
 
-{% endblock %}
+  <div class="wrapper">
+    <table id="data" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Дата рождения</th>
+            <th>Должность</th>
+            <th>Звание</th>
+            <th>Ходит в ПД или нет</th>
+            <th>Взвод</th>
+            <th>Курс</th>
+            <th>Факультет</th>
+            <th>Номер ячейки</th>
+            <th>Номер телефона</th>
+            <th>Адрес эл. почты</th>
+            <th>КПП</th>
+            <th>Патруль</th>
+            <th>ПД</th>
+            <th>Будни</th>
+            <th>Выходные</th>
+            <th>Праздники</th>
+            <th>Служба</th>
+            <th>Итого</th>
+            <th>Редактирование</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+  </div>
 
-</main>
-</body>
-</html>
+    <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        ajax: '/api/data',
+        columns: [
+          {data: 'surname'},
+          {data: 'name'},
+          {data: 'midname'},
+          {data: 'birthday'},
+          {data: 'title'},
+          {data: 'post'},
+          {data: 'commander'},
+          {data: 'platoon'},
+          {data: 'course'},
+          {data: 'faculty'},
+          {data: 'card_number'},
+          {data: 'phone_number'},
+          {data: 'login_email'},
+          {data: 'sytki_kpp'},
+          {data: 'sytki_patrol'},
+          {data: 'sytki_pd'},
+          {data: 'days_of_sytki'},
+          {data: 'sytki_on_weekends'},
+          {data: 'sytki_on_holidays'},
+          {data: 'days_of_sluzhba'},
+          {data: ''},
+          {data: 'url'},
+        ],
+      });
+    });
+    </script>
 
+<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery-3.6.0.min.js')}}"></script>
+<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.js')}}"></script>
+<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.bootstrap5.js')}}"></script>
 
-
+  {% endblock %}
 <!--
 Функционал вкладки:
   1) админ
-  - Просмотр таблицы статистики за всех курсантов (разделение на блоки по курсам???).
-  - Печать/вывод статистики (с необходимой выборкой) - Да, но на поздних этапах
+- Просмотр таблицы статистики за всех курсантов (разделение на блоки по курсам???).
+- Возможность редактирования анкет курсантов (изменение персональных данных на подвкладке «редактирование», перепроверка и редактирование количества и качества суток курсанта с дальнейшем сохранением в БД).
+? Печать/вывод статистики (с необходимой выборкой) - Да, но на поздних этапах
 
   2) курсовой офицер
-  - Просмотр таблицы статистики за свой курс.
-  - Возможность редактирования анкет курсантов (изменение персональных данных на подвкладке «редактирование», перепроверка и редактирование количества и качества суток курсанта с дальнейшем сохранением в БД).
+- Просмотр таблицы статистики за свой курс.
+- Возможность редактирования анкет курсантов (изменение персональных данных на подвкладке «редактирование», перепроверка и редактирование количества и качества суток курсанта с дальнейшем сохранением в БД).
+? Печать/вывод статистики (с необходимой выборкой) - Да, но на поздних этапах
 
   3) курсант -
 -->

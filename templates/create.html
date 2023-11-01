@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 # наследование от страницы base.html
+{{ super() }}
 
-<body>
-<main>
-
-        {% block body %}
-  <div class="d-flex flex-wrap container py-4 text-center align-items-center">
-    <form class="row g-3 py-4 needs-validation" novalidate>
+  {% block body %}
+<div class="d-flex flex-wrap container py-4 text-center align-items-center" xmlns="http://www.w3.org/1999/html">
+    <form class="row g-3 py-4 needs-validation" onsubmit="return getValue('commands')" oninput="gggg.value=text.value" novalidate>
 
       <div class="container text-center">
         <div class="row align-items-center justify-content-center">
@@ -25,39 +23,39 @@
           </div>
         </div>
       </div>
+
       <div class="container text-center">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-2">
-            <input type="text" class="form-control" id="validationCustom01" value="" required>
+            <input type="text" class="form-control" id="validationCustom01" name="text" autofocus value="" required>
           </div>
           <div class="col-md-2">
-            <select class="form-select" id="validationCustom02" required>
+            <select class="form-select" id="month" onchange="run()" required>
               <option selected disabled value="">Выберите...</option>
-              <option>январь</option>
-              <option>февраль</option>
-              <option>март</option>
-              <option>апрель</option>
-              <option>май</option>
-              <option>июнь</option>
-              <option>июль</option>
-              <option>август</option>
-              <option>сентябрь</option>
-              <option>октябрь</option>
-              <option>ноябрь</option>
-              <option>декабрь</option>
+              <option value="01">январь</option>
+              <option value="02">февраль</option>
+              <option value="03">март</option>
+              <option value="04">апрель</option>
+              <option value="05">май</option>
+              <option value="06">июнь</option>
+              <option value="07">июль</option>
+              <option value="08">август</option>
+              <option value="09">сентябрь</option>
+              <option value="10">октябрь</option>
+              <option value="11">ноябрь</option>
+              <option value="12">декабрь</option>
             </select>
           </div>
           <div class="col-md-2">
-            <input type="text" class="form-control" id="validationCustom03" value="" required>
+            <input type="text" class="form-control" id="commands" value="" size="2" required>
           </div>
           <!--ИЛИ ФОРМИРОВАТЬ МЕСЯЦ НАРЯДА С ВЫГРУЗКОЙ ИЗ КАЛЕНДАРЯ???-->
           <div class="col-md-2">
-            <input class="btn btn-primary" type="submit" value="Сгенерировать месяц">
+            <input class="btn btn-primary" value="Сгенерировать месяц">
           </div>
         </div>
       </div>
 
-      <!--ИЛИ ФОРМИРОВАТЬ МЕСЯЦ НАРЯДА С ВЫГРУЗКОЙ ИЗ КАЛЕНДАРЯ-->
       <hr class="featurette-divider">
 
       <div class="container text-center">
@@ -89,10 +87,10 @@
         </div>
       </div>
 
-      <div class="container text-center">
+      <div class="container text-center box">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-1 py-2">
-            <label for="validationCustom01" class="form-label">01.09.2023</label>
+            <label for="validationCustom01" class="form-label"><output id="dd">дд</output>.<output id="mm">мм</output>.<output name="gggg">гггг</output></label>
           </div>
           <div class="col-md-1 py-0">
             <input type="text" class="form-control" id="validationCustom0" value="" required>
@@ -127,98 +125,50 @@
         </div>
       </div>
 
-      <div class="container text-center">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-md-1 py-2">
-            <label for="validationCustom01" class="form-label">02.09.2023</label>
-          </div>
-          <div class="col-md-1 py-1">
-            <input type="text" class="form-control" id="validationCustom0" value="" required>
-          </div>
-          <div class="col-md-1 py-1">
-            <input type="text" class="form-control" id="validationCustom0" value="" required>
-          </div>
-          <div class="col-md-1 py-1">
-            <input type="text" class="form-control" id="validationCustom0" value="" required>
-          </div>
-          <div class="col-md-1 py-1">
-            <input type="text" class="form-control" id="validationCustom0" value="" required>
-          </div>
-          <div class="col-md-1 py-1">
-            <input type="text" class="form-control" id="validationCustom0" value="" required>
-          </div>
-          <div class="col-md-4 py-1">
-            <select class="form-select" id="validationCustom04" required>
-              <option selected disabled value=""></option>
-              <option>Будний день</option>
-              <option>Выходной день</option>
-              <option>Праздничный день</option>
-            </select>
-          </div>
-          <div class="col-md-1 py-1">
-            <select class="form-select" id="validationCustom04" required>
-              <option selected disabled value=""></option>
-              <option>М</option>
-              <option>Ж</option>
-            </select>
-          </div>
-        </div>
-      </div>
+      <script>
+      var input = document.getElementById('commands'); //берем значение - количество дней, введенное в input
+      var dd = '0';
 
-      <div class="container text-center">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-md-1 py-2">
-            <label for="validationCustom01" class="form-label">03.09.2023</label>
-          </div>
-          <div class="col-md-1 py-1">
-            <input type="text" class="form-control" id="validationCustom0" value="" required>
-          </div>
-          <div class="col-md-1 py-1">
-            <input type="text" class="form-control" id="validationCustom0" value="" required>
-          </div>
-          <div class="col-md-1 py-1">
-            <input type="text" class="form-control" id="validationCustom0" value="" required>
-          </div>
-          <div class="col-md-1 py-1">
-            <input type="text" class="form-control" id="validationCustom0" value="" required>
-          </div>
-          <div class="col-md-1 py-1">
-            <input type="text" class="form-control" id="validationCustom0" value="" required>
-          </div>
-          <div class="col-md-4 py-1">
-            <select class="form-select" id="validationCustom04" required>
-              <option selected disabled value=""></option>
-              <option>Будний день</option>
-              <option>Выходной день</option>
-              <option>Праздничный день</option>
-            </select>
-          </div>
-          <div class="col-md-1 py-1">
-            <select class="form-select" id="validationCustom04" required>
-              <option selected disabled value=""></option>
-              <option>М</option>
-              <option>Ж</option>
-            </select>
-          </div>
-        </div>
-      </div>
+      input.addEventListener('change', function ()
+      {
+         multiplyNode(document.querySelector('.box'), input.value, true);
+      });
+
+      function multiplyNode(node, count, deep)
+      {
+        for (var i = 0, copy; i < count - 1; i++)
+        {
+          copy = node.cloneNode(deep);
+          node.parentNode.insertBefore(copy, node);
+          dd++;
+        }
+      }
+      multiplyNode(document.querySelector('.box'), input.value, true); //выводит элемент класса .box input.value - раз (т.е. принимается значение из инпута)
+      </script>
 
       <div class="col-12 py-4">
         <button class="btn btn-primary" type="submit">Начать расстановку</button>
       </div>
+
+      <script>
+        function run() {
+        document.getElementById("mm").value = document.getElementById("month").value;
+        }
+      </script>
+
+      <script>
+        var dd = '0';
+        for (var i = 0; i < 2; i++)
+        {
+          dd++;
+          document.write(dd);
+        }
+      </script>
+
     </form>
   </div>
 
   {% endblock %}
-
-
-  <!--<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-    <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-  </form>-->
-
-</main>
-</body>
-</html>
 
 <!--
  Функционал вкладки:

@@ -1,150 +1,437 @@
 {% extends 'base.html' %}
 # наследование от страницы base.html
 
-<body>
-  <main>
-
     {% block body %}
-          <!--ДЛЯ КУРСОВОГО-->
-      <div class="d-flex flex-wrap container text-center align-items-center">
-        <form class="row g-3 py-4 needs-validation" novalidate>
 
-          <div class="container text-center">
-            <div class="row align-items-center justify-content-center">
-              <div class="col-md-4 py-4 form-check-inline">
-                <div class="calendar"></div>
-              </div>
-              <div class="col-md-7 py-4 form-check-inline">
-                <h6 class="text-center">Расстановка на службу с «10» сентября 2023 г. по «11» сентября 2023 г. ФПСОИБ</h6>
-                <table class="table table-bordered text-start">
-                  <thead>
-                  <tr>
-                    <th scope="col">№</th>
-                    <th scope="col">Вид наряда</th>
-                    <th scope="col">Спец. звание</th>
-                    <th scope="col">ФИО</th>
-                    <th scope="col">№ ячейки</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Помощник дежурного</td>
-                    <td>сержант полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Постовой по КПП №1</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>1</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Постовой по КПП №2</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Постовой по КПП №3</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>6</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Постовой по КПП №4</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>14</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">6</th>
-                    <td>Патрульный по объекту №1</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>13</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">7</th>
-                    <td>Патрульный по объекту №2</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>9</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">8</th>
-                    <td>Патрульный по объекту №3</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>2</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">9</th>
-                    <td>Патрульный по объекту №4</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>7</td>
-                  </tr>
-                  </tbody>
-                </table>
+    <div class="d-flex flex-wrap container text-center align-items-center">
+      <form class="row g-3 py-4 needs-validation" novalidate>
+        <div class="row mb-2">
+          <div class="col-md-4">
+            <div class="row g-0 overflow-hidden flex-md-row mb-4 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+              <!--календарь-->
+                <div class="calendar" id="calendar-app">
+                  <div class="calendar--view" id="calendar-view">
+                    <!--ПРОШЛЫЙ ТЕКУЩИЙ И СЛЕДУЮЩИЙ МЕСЯЦ-->
+                    <div class="cview__month">
+                      <span class="cview__month-last" id="calendar-month-last"></span>
+                      <span class="cview__month-current" id="calendar-month"></span>
+                      <span class="cview__month-next" id="calendar-month-next"></span>
+                    </div>
+                    <!--ДНИ НЕДЕЛИ-->
+                    <div class="cview__header">Вс</div>
+                    <div class="cview__header">Пн</div>
+                    <div class="cview__header">Вт</div>
+                    <div class="cview__header">Ср</div>
+                    <div class="cview__header">Чт</div>
+                    <div class="cview__header">Пт</div>
+                    <div class="cview__header">Сб</div>
+                    <!--ДНИ МЕСЯЦА-->
+                    <div class="calendar--view" id="dates">
+                    </div>
+                  </div>
+                  <!--ССЫЛКА НА СЕГОДНЯШНИЙ ДЕНЬ-->
+                  <div class="footer">
+                    <span><span id="footer-date" class="footer__link">Сегодня</span></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <hr class="featurette-divider">
 
-          <div class="container text-center">
-            <div class="row align-items-center justify-content-center">
-              <div class="col-md-7 py-4 form-check-inline">
-                <h6 class="text-center">Резерв на службу с «10» сентября 2023 г. по «11» сентября 2023 г. ФПСОИБ</h6>
-                <table class="table table-bordered text-start">
-                  <thead>
-                  <tr>
-                    <th scope="col">№</th>
-                    <th scope="col">Вид наряда</th>
-                    <th scope="col">Спец. звание</th>
-                    <th scope="col">ФИО</th>
-                    <th scope="col">№ ячейки</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Помощник дежурного</td>
-                    <td>сержант полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Постовой по КПП</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>1</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Патрульный по объекту</td>
-                    <td>рядовой полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>3</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
+          <div class="col-md-8">
+            <!--Всплывающее окно куда планируется добавить таблицу с расстановкой при нажатии на день в календаре-->
+                <div class="rasstanovka" id="day-view">
+                  <div class="day-view-content">
+
+                    <!--Таблица с расстановкой-->
+                    <div class="py-4">
+                      <h6 class="text-center">Расстановка суточного наряда на <span class="day-view-date" id="day-view-date1">сегодня</span> ФПСОИБ</h6>
+                      <table class="table table-bordered text-start">
+                        <thead>
+                        <tr>
+                          <th scope="col">№</th>
+                          <th scope="col">Вид наряда</th>
+                          <th scope="col">Спец. звание</th>
+                          <th scope="col">ФИО</th>
+                          <th scope="col">№ ячейки</th>
+                          <th scope="col">Замена</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Помощник дежурного</td>
+                          <td>сержант полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>10</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Постовой по КПП №1</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>1</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Постовой по КПП №2</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>3</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">4</th>
+                          <td>Постовой по КПП №3</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>6</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">5</th>
+                          <td>Постовой по КПП №4</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>14</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">6</th>
+                          <td>Патрульный по объекту №1</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>13</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">7</th>
+                          <td>Патрульный по объекту №2</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>9</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">8</th>
+                          <td>Патрульный по объекту №3</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>2</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">9</th>
+                          <td>Патрульный по объекту №4</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>7</td>
+                          <td></td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <!--Таблица с резервом-->
+                    <div class="py-4">
+                      <h6 class="text-center">Резерв суточного наряда на <span class="day-view-date" id="day-view-date2">сегодня</span> ФПСОИБ</h6>
+
+                      <table class="table table-bordered text-start">
+                        <thead>
+                        <tr>
+                          <th scope="col">№</th>
+                          <th scope="col">Вид наряда</th>
+                          <th scope="col">Спец. звание</th>
+                          <th scope="col">ФИО</th>
+                          <th scope="col">№ ячейки</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Помощник дежурного</td>
+                          <td>сержант полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>10</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Постовой по КПП</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Патрульный по объекту</td>
+                          <td>рядовой полиции</td>
+                          <td>Иванов И.И.</td>
+                          <td>3</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                  </div>
+                </div>
             </div>
           </div>
 
-          <hr class="featurette-divider">
+    <script>
+      function CalendarApp(date) {
 
-          <div class="container text-center">
+      if (!(date instanceof Date)) {
+        date = new Date();
+      }
+
+      this.days = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+      this.months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+      this.months.rasstanovka = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+      this.months.list = ['январе', 'феврале', 'марте', 'апреле', 'мае', 'июне', 'июле', 'августе', 'сентябре', 'октябре', 'ноябре', 'декабре'];
+
+      this.aptDates = [new Date(2023, 1, 30).toString(),new Date(2023, 1, 1).toString()];
+      this.eles = {
+      };
+      this.calDaySelected = null;
+
+      this.calendar = document.getElementById("calendar-app");
+
+      this.calendarView = document.getElementById("dates");
+
+      this.calendarMonthDiv = document.getElementById("calendar-month");
+      this.calendarMonthLastDiv = document.getElementById("calendar-month-last");
+      this.calendarMonthNextDiv = document.getElementById("calendar-month-next");
+
+      this.dayInspirationalQuote = document.getElementById("inspirational-quote");
+
+      this.todayIsSpan = document.getElementById("footer-date");
+      this.dayViewEle = document.getElementById("day-view");
+
+      this.dayViewDateEle1 = document.getElementById("day-view-date1");
+      this.dayViewDateEle2 = document.getElementById("day-view-date2");
+      this.dayViewDateEle3 = document.getElementById("day-view-date3");
+
+    /* Запустите приложение */
+      this.showView(date);
+      this.addEventListeners();
+    }
+
+
+      CalendarApp.prototype.addEventListeners = function(){
+        this.calendar.addEventListener("click", this.mainCalendarClickClose.bind(this));
+        this.todayIsSpan.addEventListener("click", this.showView.bind(this));
+        this.calendarMonthLastDiv.addEventListener("click", this.showNewMonth.bind(this));
+        this.calendarMonthNextDiv.addEventListener("click", this.showNewMonth.bind(this));
+        this.dayViewExitEle.addEventListener("click", this.closeDayWindow.bind(this));
+        this.dayViewDateEle1.addEventListener("click", this.showNewMonth.bind(this));
+        this.dayViewDateEle2.addEventListener("click", this.showNewMonth.bind(this));
+        this.dayViewDateEle3.addEventListener("click", this.showNewMonth.bind(this));
+      };
+
+
+      CalendarApp.prototype.showView = function(date){
+        if ( !date || (!(date instanceof Date)) ) date = new Date();
+        var now = new Date(date),
+            y = now.getFullYear(),
+            m = now.getMonth();
+        var today = new Date();
+
+        var lastDayOfM = new Date(y, m + 1, 0).getDate();
+        var startingD = new Date(y, m, 1).getDay();
+        var lastM = new Date(y, now.getMonth()-1, 1);
+        var nextM = new Date(y, now.getMonth()+1, 1);
+
+        while(this.calendarView.firstChild) {
+          this.calendarView.removeChild(this.calendarView.firstChild);
+        }
+
+        for ( var z = 1; z <= lastDayOfM; z++ ) {
+
+          var _date = new Date(y, m, z);
+          var day = document.createElement("div");
+          day.className = "cview--date";
+          day.textContent = z;
+          day.setAttribute("data-date", _date);
+          day.onclick = this.showDay.bind(this);
+
+      // проверьте, соответствует ли сегодняшняя дата
+          if ( z == today.getDate() && y == today.getFullYear() && m == today.getMonth() ) {
+            day.classList.add("today");
+          }
+          this.calendarView.appendChild(day);
+        }
+
+        var _that = this;
+
+        this.calendarMonthDiv.textContent = this.months[now.getMonth()] + " " + now.getFullYear();
+        this.calendarMonthDiv.setAttribute("data-date", now);
+
+
+        this.calendarMonthLastDiv.textContent = "← " + this.months[lastM.getMonth()];
+        this.calendarMonthLastDiv.setAttribute("data-date", lastM);
+
+        this.calendarMonthNextDiv.textContent = this.months[nextM.getMonth()] + " →";
+        this.calendarMonthNextDiv.setAttribute("data-date", nextM);
+      }
+
+
+
+      CalendarApp.prototype.showDay = function(e, dayEle) {
+        e.stopPropagation();
+        if ( !dayEle ) {
+          dayEle = e.currentTarget;
+        }
+        var dayDate = new Date(dayEle.getAttribute('data-date'));
+
+        this.calDaySelected = dayEle;
+
+        this.openDayWindow(dayDate);
+      };
+
+
+
+      CalendarApp.prototype.openDayWindow = function(date){
+
+        var now = new Date();
+        var day = new Date(date);
+        this.dayViewDateEle1.textContent = "«" + day.getDate() + "» " + this.months.rasstanovka[day.getMonth()] + " " + day.getFullYear() + " г. (" + this.days[day.getDay()] + ")";
+        this.dayViewDateEle2.textContent = "«" + day.getDate() + "» " + this.months.rasstanovka[day.getMonth()] + " " + day.getFullYear() + " г. (" + this.days[day.getDay()] + ")";
+        this.dayViewDateEle3.textContent = this.months.list[day.getMonth()] + " " + day.getFullYear() + " г.";
+        this.dayViewDateEle1.setAttribute('data-date', day);
+        this.dayViewDateEle2.setAttribute('data-date', day);
+        this.dayViewDateEle3.setAttribute('data-date', day);
+        this.dayViewEle.classList.add("calendar--day-view-active");
+      };
+
+
+
+      CalendarApp.prototype.sortEventsByTime = function(events) {
+        if (!events) return [];
+        return events.sort(function compare(a, b) {
+          if (new Date(a.startTime) < new Date(b.startTime)) {
+            return -1;
+          }
+          if (new Date(a.startTime) > new Date(b.startTime)) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      };
+
+
+
+      CalendarApp.prototype.mainCalendarClickClose = function(e){
+        if ( e.currentTarget != e.target ) {
+          return;
+        }
+
+        this.dayViewEle.classList.remove("calendar--day-view-active");
+        this.closeNewEventBox();
+      };
+
+
+
+      CalendarApp.prototype.showNewMonth = function(e){
+        var date = e.currentTarget.dataset.date;
+        var newMonthDate = new Date(date);
+        this.showView(newMonthDate);
+        this.closeDayWindow();
+        return true;
+      };
+
+
+
+    var calendar = new CalendarApp();
+    console.log(calendar);
+    </script>
+
+
+
+      {% if post == "admin"%}
+        <div class="container text-center">
             <div class="row align-items-center justify-content-center">
-              <h5 class="text-center">Модуль для осуществления замены</h5>
+                <div class="py-4 col-md-12">
+                    <h6 class="text-center">Список замен суточного наряда в <span class="day-view-date" id="day-view-date3">текущем месяце</span> ФПСОИБ</h6>
+                    <table class="table table-bordered text-start">
+                          <thead>
+                          <tr>
+                            <th scope="col">№</th>
+                            <th scope="col">Кого заменили</th>
+                            <th scope="col">На кого заменили</th>
+                            <th scope="col">Пост замены</th>
+                            <th scope="col">Дата 1</th>
+                            <th scope="col">Дата 2</th>
+                            <th scope="col">Основание замены</th>
+                            <th scope="col">Подтверждение</th>
+                            <th scope="col">Рапорт</th>
+                            <th scope="col">Статус замены</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Помощник дежурного</td>
+                            <td>сержант полиции</td>
+                            <td>Иванов И.И.</td>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Помощник дежурного</td>
+                            <td>сержант полиции</td>
+                            <td>Иванов И.И.</td>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>Помощник дежурного</td>
+                            <td>сержант полиции</td>
+                            <td>Иванов И.И.</td>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">4</th>
+                            <td>Помощник дежурного</td>
+                            <td>сержант полиции</td>
+                            <td>Иванов И.И.</td>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          </tbody>
+                        </table>
+                </div>
+            </div>
+          </div>
+
+
+      {%elif post == "officer" %}
+        <div class="container text-center">
+            <div class="row align-items-center justify-content-center">
+              <h5 class="text-center">Модуль осуществления замены</h5>
               <div class="col-md-3 py-2 text-center">
                 <label for="validationCustom01" class="form-label">Кого заменить?</label>
                 <input type="text" class="form-control" id="validationCustom01" value="" required>
@@ -196,325 +483,115 @@
             </div>
           </div>
 
-          <hr class="featurette-divider">
 
-          <div class="container text-center">
-            <div class="row align-items-center justify-content-center">
-              <div class="col-md-12 py-4 form-check-inline">
-                <h6 class="text-center">Список замен на службу в сентябре 2023 г. ФПСОИБ</h6>
-                <table class="table table-bordered text-start">
-                  <thead>
-                  <tr>
-                    <th scope="col">№</th>
-                    <th scope="col">Кого заменили</th>
-                    <th scope="col">На кого заменили</th>
-                    <th scope="col">Пост замены</th>
-                    <th scope="col">Дата 1</th>
-                    <th scope="col">Дата 2</th>
-                    <th scope="col">Основание замены</th>
-                    <th scope="col">Подтверждение</th>
-                    <th scope="col">Рапорт</th>
-                    <th scope="col">Статус замены</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Помощник дежурного</td>
-                    <td>сержант полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>10</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Помощник дежурного</td>
-                    <td>сержант полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>10</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Помощник дежурного</td>
-                    <td>сержант полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>10</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Помощник дежурного</td>
-                    <td>сержант полиции</td>
-                    <td>Иванов И.И.</td>
-                    <td>10</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  </tbody>
-                </table>
+      {%else%}
+        <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="card mb-4 py-4 rounded-3 shadow-sm">
+            <div class="row text-center">
+              <div class="col-md-3 align-items-center justify-content-center">
+                <img src="{{ url_for('static', filename='img/foto.jpg') }}" width="250" class="img-fluid float-start" alt="...">
+              </div>
+              <div class="col-md-9 py-4">
+                <div class="row col-md-12 py-4">
+                    <div class="col-md-3">
+                      <div class="col-md-12 text-start">
+                        <div class="col-md-12">
+                          <label class="form-label">Иванов Иван Иванович</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">сержант полиции</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">903 взвод</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">4 курс</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">ФПСОИБ</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="col-md-12 text-start">
+                        <div class="col-md-12">
+                          <label class="form-label">Следующие сутки</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">30.11.2023</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">Суток за месяц:</label>
+                          <label class="form-label">2</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">Всего суток:</label>
+                          <label class="form-label">20</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="col-md-12 text-start">
+                        <div class="col-md-12">
+                          <label class="form-label">КПП</label>
+                          <label class="form-label">8</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">Патруль</label>
+                          <label class="form-label">8</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">ПД</label>
+                          <label class="form-label">10</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="col-md-12 text-start">
+                        <div class="col-md-12">
+                          <label class="form-label">Будни</label>
+                          <label class="form-label">8</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">Выходные</label>
+                          <label class="form-label">8</label>
+                        </div>
+                        <div class="col-md-12">
+                          <label class="form-label">Праздники</label>
+                          <label class="form-label">10</label>
+                        </div>
+                      </div>
+                    </div>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
-      </div>
-
-  <!--ДЛЯ АДМИНА-->
-  <!--
-  <div class="d-flex flex-wrap container text-center align-items-center">
-    <form class="row g-3 py-4 needs-validation" novalidate>
-
-      <div class="container text-end">
-        <div class="row align-items-end justify-content-end">
-          <div class="col-md-4 py-4 form-check-inline">
-            <div class="calendar"></div>
-          </div>
-          <div class="col-md-7 py-4 form-check-inline">
-            <h6 class="text-center">Расстановка на службу с «10» сентября 2023 г. по «11» сентября 2023 г. ФПСОИБ</h6>
-            <table class="table table-bordered text-start">
-              <thead>
-              <tr>
-                <th scope="col">№</th>
-                <th scope="col">Вид наряда</th>
-                <th scope="col">Спец. звание</th>
-                <th scope="col">ФИО</th>
-                <th scope="col">№ ячейки</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Помощник дежурного</td>
-                <td>сержант полиции</td>
-                <td>Иванов И.И.</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Постовой по КПП №1</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Постовой по КПП №2</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Постовой по КПП №3</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>6</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Постовой по КПП №4</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>14</td>
-              </tr>
-              <tr>
-                <th scope="row">6</th>
-                <td>Патрульный по объекту №1</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>13</td>
-              </tr>
-              <tr>
-                <th scope="row">7</th>
-                <td>Патрульный по объекту №2</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>9</td>
-              </tr>
-              <tr>
-                <th scope="row">8</th>
-                <td>Патрульный по объекту №3</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <th scope="row">9</th>
-                <td>Патрульный по объекту №4</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>7</td>
-              </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>
 
-      <div class="container text-end">
-        <div class="row align-items-end justify-content-end">
-          <div class="col-md-7 py-0 form-check-inline">
-            <h6 class="text-center">Резерв на службу с «10» сентября 2023 г. по «11» сентября 2023 г. ФПСОИБ</h6>
-            <table class="table table-bordered text-start">
-              <thead>
-              <tr>
-                <th scope="col">№</th>
-                <th scope="col">Вид наряда</th>
-                <th scope="col">Спец. звание</th>
-                <th scope="col">ФИО</th>
-                <th scope="col">№ ячейки</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Помощник дежурного</td>
-                <td>сержант полиции</td>
-                <td>Иванов И.И.</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Постовой по КПП</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Патрульный по объекту</td>
-                <td>рядовой полиции</td>
-                <td>Иванов И.И.</td>
-                <td>3</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
--->
+      {%endif%}
+      </form>
+    </div>
 
-
-
-  <!--ДЛЯ КУРСАНТА-->
-  <!--
-  <div class="d-flex flex-wrap container text-center align-items-center">
-    <form class="row g-3 py-4 needs-validation" novalidate>
-      <div class="container text-start">
-        <div class="row align-items-start justify-content-start">
-          <div class="card mb-4 col-md-4 py-4 rounded-3 shadow-sm">
-            <div class="col-md-12">
-              <img src="img/foto.jpg" width="250" class="img-thumbnail img-fluid float-start" alt="...">
-            </div>
-            <div class="row align-items-start justify-content-start">
-              <div class="col-md-6">
-                <input type="text" class="form-control" id="validationCustom03" value="сержант полиции" required>
-              </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" id="validationCustom03" value="Иванов И.И." required>
-              </div>
-            </div>
-            <div class="row align-items-start justify-content-start">
-              <div class="col-md-4">
-                <input type="text" class="form-control" id="validationCustom03" value="903 взвод" required>
-              </div>
-              <div class="col-md-4">
-                <input type="text" class="form-control" id="validationCustom03" value="4 курс" required>
-              </div>
-              <div class="col-md-4">
-                <input type="text" class="form-control" id="validationCustom03" value="ФПСОИБ" required>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-4 col-md-2 py-4 rounded-3 shadow-sm">
-            <div class="col-md-12">
-              <label class="form-label">Следующие сутки</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">Суток за месяц</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">Всего суток</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-          </div>
-          <div class="card mb-4 col-md-2 py-4 rounded-3 shadow-sm">
-            <div class="col-md-12">
-              <label class="form-label">КПП</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">Патруль</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">ПД</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-          </div>
-          <div class="card mb-4 col-md-2 py-4 rounded-3 shadow-sm">
-            <div class="col-md-12">
-              <label class="form-label">Будни</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">Выходные</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-            <div class="col-md-12 py-2">
-              <label class="form-label">Праздники</label>
-              <input type="text" class="form-control" id="validationCustom03" value="" required>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>-->
     {% endblock %}
-
-</main>
-</body>
-</html>
-
-
-
 
 <!--
   Функционал вкладки:
   1) админ
-Календарь с возможностью посмотреть расстановку наряда на конкретный день и список потенциальных замен
-Возможность просмотра списка замен (кто кого заменяет, по какой причине, подтверждающий документ)
-Формирование и скачивание файла расстановки суток на конкретный день
++ Календарь с возможностью посмотреть расстановку наряда на конкретный день и список потенциальных замен + добавить календарь!!!
++ Возможность просмотра списка замен (кто кого заменяет, по какой причине, подтверждающий документ)
+? Формирование и скачивание файла расстановки суток на конкретный день
 
   2) курсовой офицер
-Календарь с возможностью посмотреть расстановку наряда на конкретный день и список потенциальных замен
-Модуль для осуществления замены
-Формирование рапорта на замену суток
-Формирование графика суток на конкретный взвод
++ Календарь с возможностью посмотреть расстановку наряда на конкретный день и список потенциальных замен + добавить календарь!!!
++ Модуль для осуществления замены
+? Формирование рапорта на замену суток
+? Формирование графика суток на конкретный взвод
 
   3) курсант
-  - личный кабинет курсанта
-  - вывод статистических данных о количестве и качестве суток курсанта
-  - ознакомление с графиком нарядов
-  - возможность указания нежелательный 1 день для наряда
-
++ Календарь с возможностью посмотреть расстановку наряда на конкретный день и список потенциальных замен + добавить календарь!!!
++ Личный кабинет курсанта
++ Вывод статистических данных о количестве и качестве суток курсанта
+? Возможность указания нежелательный 1 день для наряда
  -->
