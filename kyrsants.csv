@@ -1,0 +1,4 @@
+"id_kyrsant","surname","name","middlename","birthday","phone_number","login_email","faculty","course","platoon","male","photo","title","post","commander","card_number","sytki_pd","sytki_kpp","sytki_patrol","days_of_sluzhba","days_of_sytki","sytki_on_weekends","sytki_on_holidays"
+2,"Админ",,,,,"admin@mail.ru",,,,,,,"admin",,,,,,,,,
+1,"Гусейнов","Эмир","Наврузович","2003-06-09","+79633720111","imir.guseinov2003@mail.ru","ФПСОИБ",4,902,"М",,"рядовой полиции","курсант","нет",5,1,2,3,4,5,6,7
+3,"Курсовой",,,,,"officer@mail.ru",,,,,,,"officer",,,,,,,,,
